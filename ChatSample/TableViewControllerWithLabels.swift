@@ -54,6 +54,7 @@ class TableViewControllerWithLabels: UIViewController {
 //    TextMessage(text: "I'am fine, thanks! What about you?"),
     ]
     var voiceRecordNumber = 1
+    var activePlayingButton: CustomPlayButton?
     
     var recordingSession: AVAudioSession!
     var audioRecorder: AVAudioRecorder?
@@ -104,13 +105,31 @@ class TableViewControllerWithLabels: UIViewController {
     }
     
     @IBAction func oddPlayButtonTapped(_ sender: CustomPlayButton) {
-        guard let index = sender.cellContainingButtonIndexPath?.row else { return }
-        play(urlToPlay: URL(fileURLWithPath: messageArray[index].text))
+        playButtonTapped(button: sender)
     }
     
     @IBAction func evenPlayButtonTapped(_ sender: CustomPlayButton) {
-        guard let index = sender.cellContainingButtonIndexPath?.row else { return }
+        playButtonTapped(button: sender)
+    }
+    
+    func playButtonTapped(button: CustomPlayButton) {
+        guard let index = button.cellContainingButtonIndexPath?.row else { return }
+        guard let player = self.player else {
+            activePlayingButton = button
+            play(urlToPlay: URL(fileURLWithPath: messageArray[index].text))
+            button.setBackgroundImage(UIImage(systemName: "stop.circle"), for: .normal)
+            return
+        }
         play(urlToPlay: URL(fileURLWithPath: messageArray[index].text))
+        if player.isPlaying {
+            activePlayingButton = nil
+            player.stop()
+            button.setBackgroundImage(UIImage(systemName: "play.circle"), for: .normal)
+        } else {
+            activePlayingButton = button
+            play(urlToPlay: URL(fileURLWithPath: messageArray[index].text))
+            button.setBackgroundImage(UIImage(systemName: "stop.circle"), for: .normal)
+        }
     }
     
     func play(urlToPlay: URL) {
@@ -307,5 +326,10 @@ extension TableViewControllerWithLabels: AVAudioRecorderDelegate {
 }
 
 extension TableViewControllerWithLabels: AVAudioPlayerDelegate {
-    
+    func audioPlayerDidFinishPlaying(_ player: AVAudioPlayer, successfully flag: Bool) {
+        if activePlayingButton != nil {
+            activePlayingButton!.setBackgroundImage(UIImage(systemName: "play.circle"), for: .normal)
+            activePlayingButton = nil
+        }
+    }
 }
