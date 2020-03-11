@@ -8,6 +8,7 @@
 
 import UIKit
 import LocalAuthentication
+import AVFoundation
 
 protocol MessageType {
     var kind: MessageKind { get }
@@ -34,12 +35,12 @@ class TextMessage: MessageType {
 }
 
 class AudioMessage: MessageType {
-    var text: String { data }
+    var text: String { url.path }
     var kind: MessageKind = .audio
-    var data: String
+    var url: URL
     
-    init() {
-        data = "Voice message"
+    init(url: URL) {
+        self.url = url
     }
 }
 
@@ -52,6 +53,10 @@ class TableViewControllerWithLabels: UIViewController {
 //    TextMessage(text: "How are you?"),
 //    TextMessage(text: "I'am fine, thanks! What about you?"),
     ]
+    var voiceRecordNumber = 1
+    
+    var recordingSession: AVAudioSession = AVAudioSession.sharedInstance()
+    var audioRecorder: AVAudioRecorder?
     
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var messageOutlet: UITextField!
@@ -72,11 +77,20 @@ class TableViewControllerWithLabels: UIViewController {
     
     @IBAction func longPressButton(_ sender: Any) {
         if messageOutlet.text == "" {
+            let recName = "VoiceMessage_\(voiceRecordNumber)"
+            let url = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0].appendingPathComponent(recName)
+
             if longPressOutlet.state == .began {
-                
-                messageArray.append(AudioMessage())
+                if audioRecorder == nil {
+                    startRecorder(recordUrl: url)
+                }
             } else if longPressOutlet.state == .ended {
-                sendVoiceMessage()
+                if audioRecorder != nil {
+                    finishRecording(success: true)
+                    messageArray.append(AudioMessage(url: url))
+                    voiceRecordNumber += 1
+                    sendVoiceMessage()
+                }
             }
         }
     }
@@ -85,9 +99,37 @@ class TableViewControllerWithLabels: UIViewController {
         messageOutlet.resignFirstResponder()
     }
     
+    func startRecorder(recordUrl: URL) {
+        let settings = [
+            AVFormatIDKey: Int(kAudioFormatAppleLossless),
+            AVSampleRateKey: 44100,
+            AVNumberOfChannelsKey: 2,
+            AVEncoderBitRateKey: 320000,
+            AVEncoderAudioQualityKey: AVAudioQuality.max.rawValue,
+            AVEncoderBitDepthHintKey: 32
+        ]
+        do {
+            audioRecorder = try AVAudioRecorder(url: recordUrl, settings: settings)
+            if audioRecorder != nil {
+                let aR = audioRecorder!
+                aR.delegate = self
+                aR.record()
+            }
+        } catch {
+            finishRecording(success: false)
+        }
+    }
+    
     func sendVoiceMessage() {
         tableView.reloadData()
         tableView.scrollToRow(at: IndexPath(item: messageArray.count - 1, section: 0), at: .bottom, animated: true)
+    }
+    
+    func finishRecording(success: Bool) {
+        if audioRecorder != nil {
+            audioRecorder!.stop()
+            audioRecorder = nil
+        }
     }
     
     @objc func textFieldDidChange(_ textField: UITextField) {
@@ -165,6 +207,7 @@ extension TableViewControllerWithLabels: UITableViewDataSource {
             }
             if messageArray[indexPath.row].kind == .text {
                 let cell = tableView.dequeueReusableCell(withIdentifier: "oddCellWithLabel", for: indexPath) as! OddCellWithLabel
+                setupLabel(label: cell.label, text: "Voice message")
                 setupLabel(label: cell.label, text: text)
                 setupContainer(containerView: cell.containerView, color: UIColor.systemBlue.cgColor)
                 return cell
@@ -178,6 +221,7 @@ extension TableViewControllerWithLabels: UITableViewDataSource {
             }
             if messageArray[indexPath.row].kind == .text {
                 let cell = tableView.dequeueReusableCell(withIdentifier: "evenCellWithLabel", for: indexPath) as! EvenCellWithLabel
+//                setupLabel(label: cell.label, text: "Voice message")
                 setupLabel(label: cell.label, text: text)
                 setupContainer(containerView: cell.containerView, color: UIColor.systemGreen.cgColor)
                 return cell
@@ -205,5 +249,13 @@ extension TableViewControllerWithLabels: UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         sendMessageButton(sendButton)
         return true
+    }
+}
+
+extension TableViewControllerWithLabels: AVAudioRecorderDelegate {
+    func audioRecorderDidFinishRecording(_ recorder: AVAudioRecorder, successfully flag: Bool) {
+        if !flag {
+            finishRecording(success: false)
+        }
     }
 }
