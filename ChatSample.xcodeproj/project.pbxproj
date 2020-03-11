@@ -18,6 +18,7 @@
 		84DB5B6023F542D100439AA8 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 84DB5B5E23F542D100439AA8 /* LaunchScreen.storyboard */; };
 		84E52CB32417FEF700FC4A29 /* EvenCellVithVoice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84E52CB22417FEF700FC4A29 /* EvenCellVithVoice.swift */; };
 		84E52CB5241801A900FC4A29 /* OddCellWithVoice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84E52CB4241801A900FC4A29 /* OddCellWithVoice.swift */; };
+		84E52CB7241903C900FC4A29 /* CustomPlayButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84E52CB6241903C900FC4A29 /* CustomPlayButton.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,6 +35,7 @@
 		84DB5B6123F542D100439AA8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		84E52CB22417FEF700FC4A29 /* EvenCellVithVoice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EvenCellVithVoice.swift; sourceTree = "<group>"; };
 		84E52CB4241801A900FC4A29 /* OddCellWithVoice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OddCellWithVoice.swift; sourceTree = "<group>"; };
+		84E52CB6241903C900FC4A29 /* CustomPlayButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomPlayButton.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -75,6 +77,7 @@
 				842DF85223F69CB7001E5006 /* OddCellWithLabel.swift */,
 				84E52CB22417FEF700FC4A29 /* EvenCellVithVoice.swift */,
 				84E52CB4241801A900FC4A29 /* OddCellWithVoice.swift */,
+				84E52CB6241903C900FC4A29 /* CustomPlayButton.swift */,
 				84DB5B5C23F542D100439AA8 /* Assets.xcassets */,
 				84DB5B5E23F542D100439AA8 /* LaunchScreen.storyboard */,
 				84DB5B6123F542D100439AA8 /* Info.plist */,
@@ -153,6 +156,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				84E52CB7241903C900FC4A29 /* CustomPlayButton.swift in Sources */,
 				842DF85323F69CB7001E5006 /* OddCellWithLabel.swift in Sources */,
 				842DF85723F6C729001E5006 /* EvenCellWithLabel.swift in Sources */,
 				84E52CB5241801A900FC4A29 /* OddCellWithVoice.swift in Sources */,

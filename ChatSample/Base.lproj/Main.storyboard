@@ -114,25 +114,31 @@
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="oddCellWithVoice" id="u6w-uM-m9E" customClass="OddCellWithVoice" customModule="ChatSample" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="116" width="414" height="38"/>
+                                        <rect key="frame" x="0.0" y="116" width="414" height="41"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="u6w-uM-m9E" id="Pi0-2R-z21">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="38"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="41"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <view contentMode="scaleToFill" horizontalCompressionResistancePriority="1000" translatesAutoresizingMaskIntoConstraints="NO" id="B6R-Uu-20q">
-                                                    <rect key="frame" x="20" y="3" width="155.5" height="32"/>
+                                                    <rect key="frame" x="20" y="3" width="160.5" height="35"/>
                                                     <subviews>
-                                                        <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="1000" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rfx-WB-obg">
-                                                            <rect key="frame" x="5" y="5" width="20" height="22"/>
+                                                        <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="1000" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rfx-WB-obg" customClass="CustomPlayButton" customModule="ChatSample" customModuleProvider="target">
+                                                            <rect key="frame" x="5" y="5.5" width="25" height="24"/>
                                                             <constraints>
-                                                                <constraint firstAttribute="width" constant="20" id="hUy-EK-vES"/>
+                                                                <constraint firstAttribute="height" constant="25" id="E7S-nR-ObQ"/>
+                                                                <constraint firstAttribute="width" constant="25" id="hUy-EK-vES"/>
                                                             </constraints>
                                                             <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                            <state key="normal" image="play.circle" catalog="system"/>
+                                                            <state key="normal" backgroundImage="play.circle" catalog="system">
+                                                                <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="19"/>
+                                                            </state>
+                                                            <connections>
+                                                                <action selector="oddPlayButtonTapped:" destination="XBd-gh-rKN" eventType="touchUpInside" id="0BM-H1-dca"/>
+                                                            </connections>
                                                         </button>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="1000" verticalHuggingPriority="251" text="Voice message" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VZc-aY-AOJ">
-                                                            <rect key="frame" x="30" y="5" width="115.5" height="22"/>
+                                                            <rect key="frame" x="35" y="5" width="115.5" height="25"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
@@ -160,42 +166,47 @@
                                         <connections>
                                             <outlet property="containerView" destination="B6R-Uu-20q" id="RfF-Wx-ka3"/>
                                             <outlet property="label" destination="VZc-aY-AOJ" id="NsA-4V-Jeg"/>
-                                            <outlet property="playButton" destination="rfx-WB-obg" id="WB6-Ta-RID"/>
+                                            <outlet property="playButton" destination="rfx-WB-obg" id="fDN-N9-3xN"/>
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="evenCellWithVoice" id="gdu-c8-FsG" customClass="EvenCellVithVoice" customModule="ChatSample" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="154" width="414" height="38"/>
+                                        <rect key="frame" x="0.0" y="157" width="414" height="41"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="gdu-c8-FsG" id="KP2-eM-JwV">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="38"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="41"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <view contentMode="scaleToFill" horizontalCompressionResistancePriority="1000" translatesAutoresizingMaskIntoConstraints="NO" id="5GX-S0-wS9">
-                                                    <rect key="frame" x="238.5" y="3" width="155.5" height="32"/>
+                                                    <rect key="frame" x="233.5" y="3" width="160.5" height="35"/>
                                                     <subviews>
-                                                        <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="1000" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kuD-tw-Wab">
-                                                            <rect key="frame" x="5" y="5" width="20" height="22"/>
+                                                        <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="1000" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kuD-tw-Wab" customClass="CustomPlayButton" customModule="ChatSample" customModuleProvider="target">
+                                                            <rect key="frame" x="5" y="5.5" width="25" height="24"/>
                                                             <constraints>
-                                                                <constraint firstAttribute="width" constant="20" id="Xq3-FR-kUP"/>
+                                                                <constraint firstAttribute="width" constant="25" id="Xq3-FR-kUP"/>
+                                                                <constraint firstAttribute="height" constant="25" id="Xva-eo-6kx"/>
                                                             </constraints>
                                                             <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                            <state key="normal" image="play.circle" catalog="system"/>
+                                                            <state key="normal" backgroundImage="play.circle" catalog="system"/>
+                                                            <connections>
+                                                                <action selector="evenPlayButtonTapped:" destination="XBd-gh-rKN" eventType="touchUpInside" id="yYW-xe-OEY"/>
+                                                            </connections>
                                                         </button>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="1000" verticalHuggingPriority="251" text="Voice message" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZcF-71-X2E">
-                                                            <rect key="frame" x="30" y="5" width="115.5" height="22"/>
+                                                            <rect key="frame" x="35" y="5" width="115.5" height="25"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                     </subviews>
                                                     <constraints>
-                                                        <constraint firstAttribute="bottom" secondItem="kuD-tw-Wab" secondAttribute="bottom" constant="5" id="1vM-kl-pQn"/>
                                                         <constraint firstAttribute="bottom" secondItem="ZcF-71-X2E" secondAttribute="bottom" constant="5" id="4wL-1m-poK"/>
-                                                        <constraint firstItem="kuD-tw-Wab" firstAttribute="top" secondItem="5GX-S0-wS9" secondAttribute="top" constant="5" id="Aji-0A-7z9"/>
                                                         <constraint firstAttribute="trailing" secondItem="ZcF-71-X2E" secondAttribute="trailing" constant="10" id="Fvg-Pi-YHO"/>
+                                                        <constraint firstAttribute="bottom" secondItem="kuD-tw-Wab" secondAttribute="bottom" constant="5" id="ZL5-sL-P7c"/>
+                                                        <constraint firstItem="kuD-tw-Wab" firstAttribute="top" secondItem="5GX-S0-wS9" secondAttribute="top" constant="5" id="ddq-mc-CVK"/>
                                                         <constraint firstItem="ZcF-71-X2E" firstAttribute="top" secondItem="5GX-S0-wS9" secondAttribute="top" constant="5" id="kzg-DQ-j3T"/>
                                                         <constraint firstItem="kuD-tw-Wab" firstAttribute="leading" secondItem="5GX-S0-wS9" secondAttribute="leading" constant="5" id="pSg-0q-pdr"/>
                                                         <constraint firstItem="ZcF-71-X2E" firstAttribute="leading" secondItem="kuD-tw-Wab" secondAttribute="trailing" constant="5" id="tuH-2T-Ubz"/>
+                                                        <constraint firstItem="kuD-tw-Wab" firstAttribute="centerY" secondItem="ZcF-71-X2E" secondAttribute="centerY" id="ubI-Sb-lUC"/>
                                                     </constraints>
                                                 </view>
                                             </subviews>
@@ -210,7 +221,7 @@
                                         <connections>
                                             <outlet property="containerView" destination="5GX-S0-wS9" id="Mka-H9-BIZ"/>
                                             <outlet property="label" destination="ZcF-71-X2E" id="IBl-wJ-eOE"/>
-                                            <outlet property="playButton" destination="kuD-tw-Wab" id="CXr-hb-eHu"/>
+                                            <outlet property="playButton" destination="kuD-tw-Wab" id="6MF-KN-LFe"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>

@@ -11,6 +11,7 @@ import UIKit
 class EvenCellVithVoice: UITableViewCell {
 
     @IBOutlet weak var containerView: UIView!
+    @IBOutlet weak var playButton: CustomPlayButton!
     @IBOutlet weak var label: UILabel!
-    @IBOutlet weak var playButton: UIButton!
+
 }

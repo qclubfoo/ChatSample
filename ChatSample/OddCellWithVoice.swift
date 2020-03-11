@@ -11,8 +11,8 @@ import UIKit
 class OddCellWithVoice: UITableViewCell {
 
     @IBOutlet weak var containerView: UIView!
-    @IBOutlet weak var playButton: UIButton!
+    @IBOutlet weak var playButton: CustomPlayButton!
     @IBOutlet weak var label: UILabel!
-    
+
     
 }

@@ -55,13 +55,17 @@ class TableViewControllerWithLabels: UIViewController {
     ]
     var voiceRecordNumber = 1
     
-    var recordingSession: AVAudioSession = AVAudioSession.sharedInstance()
+    var recordingSession: AVAudioSession!
     var audioRecorder: AVAudioRecorder?
+    var player: AVAudioPlayer?
     
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var messageOutlet: UITextField!
     @IBOutlet weak var sendButton: UIButton!
     @IBOutlet var longPressOutlet: UILongPressGestureRecognizer!
+    
+
+    
     
     @IBAction func sendMessageButton(_ sender: UIButton) {
         guard let message = messageOutlet.text else { return }
@@ -77,7 +81,7 @@ class TableViewControllerWithLabels: UIViewController {
     
     @IBAction func longPressButton(_ sender: Any) {
         if messageOutlet.text == "" {
-            let recName = "VoiceMessage_\(voiceRecordNumber)"
+            let recName = "VoiceMessage_\(voiceRecordNumber).m4a"
             let url = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0].appendingPathComponent(recName)
 
             if longPressOutlet.state == .began {
@@ -98,6 +102,28 @@ class TableViewControllerWithLabels: UIViewController {
     @IBAction func hidingKeyboardTap(_ sender: Any) {
         messageOutlet.resignFirstResponder()
     }
+    
+    @IBAction func oddPlayButtonTapped(_ sender: CustomPlayButton) {
+        guard let index = sender.cellContainingButtonIndexPath?.row else { return }
+        play(urlToPlay: URL(fileURLWithPath: messageArray[index].text))
+    }
+    
+    @IBAction func evenPlayButtonTapped(_ sender: CustomPlayButton) {
+        guard let index = sender.cellContainingButtonIndexPath?.row else { return }
+        play(urlToPlay: URL(fileURLWithPath: messageArray[index].text))
+    }
+    
+    func play(urlToPlay: URL) {
+        do {
+            player = try AVAudioPlayer(contentsOf: urlToPlay)
+            player?.delegate = self
+            player?.volume = 1.0
+            player?.play()
+        } catch {
+            print("There is no files to play")
+        }
+    }
+    
     
     func startRecorder(recordUrl: URL) {
         let settings = [
@@ -142,6 +168,25 @@ class TableViewControllerWithLabels: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        recordingSession = AVAudioSession.sharedInstance()
+        
+        do {
+            try recordingSession.setCategory(.playAndRecord, mode: .default)
+            try recordingSession.overrideOutputAudioPort(.speaker)
+            try recordingSession.setActive(true)
+            recordingSession.requestRecordPermission() { allowed in
+                DispatchQueue.main.async {
+                    if allowed {
+                        print("premission granted")
+                    } else {
+                        print("premission denied, record was failed")
+                    }
+                }
+            }
+        } catch {
+            print("failed to record")
+        }
         
         NotificationCenter.default.addObserver(
           self,
@@ -201,13 +246,14 @@ extension TableViewControllerWithLabels: UITableViewDataSource {
         if indexPath.row % 2 == 0 {
             if messageArray[indexPath.row].kind == .audio {
                 let cell = tableView.dequeueReusableCell(withIdentifier: "oddCellWithVoice", for: indexPath) as! OddCellWithVoice
-                setupLabel(label: cell.label, text: text)
+                cell.playButton.cellContainingButtonIndexPath = indexPath
+                setupLabel(label: cell.label, text: "Voice message")
+//                setupLabel(label: cell.label, text: text)
                 setupContainer(containerView: cell.containerView, color: UIColor.systemBlue.cgColor)
                 return cell
             }
             if messageArray[indexPath.row].kind == .text {
                 let cell = tableView.dequeueReusableCell(withIdentifier: "oddCellWithLabel", for: indexPath) as! OddCellWithLabel
-                setupLabel(label: cell.label, text: "Voice message")
                 setupLabel(label: cell.label, text: text)
                 setupContainer(containerView: cell.containerView, color: UIColor.systemBlue.cgColor)
                 return cell
@@ -215,13 +261,13 @@ extension TableViewControllerWithLabels: UITableViewDataSource {
         } else {
             if messageArray[indexPath.row].kind == .audio {
                 let cell = tableView.dequeueReusableCell(withIdentifier: "evenCellWithVoice", for: indexPath) as! EvenCellVithVoice
-                setupLabel(label: cell.label, text: text)
+                cell.playButton.cellContainingButtonIndexPath = indexPath
+                setupLabel(label: cell.label, text: "Voice message")
                 setupContainer(containerView: cell.containerView, color: UIColor.systemGreen.cgColor)
                 return cell
             }
             if messageArray[indexPath.row].kind == .text {
                 let cell = tableView.dequeueReusableCell(withIdentifier: "evenCellWithLabel", for: indexPath) as! EvenCellWithLabel
-//                setupLabel(label: cell.label, text: "Voice message")
                 setupLabel(label: cell.label, text: text)
                 setupContainer(containerView: cell.containerView, color: UIColor.systemGreen.cgColor)
                 return cell
@@ -258,4 +304,8 @@ extension TableViewControllerWithLabels: AVAudioRecorderDelegate {
             finishRecording(success: false)
         }
     }
+}
+
+extension TableViewControllerWithLabels: AVAudioPlayerDelegate {
+    
 }
