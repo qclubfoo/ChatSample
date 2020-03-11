@@ -11,6 +11,7 @@ import LocalAuthentication
 
 protocol MessageType {
     var kind: MessageKind { get }
+    var text: String { get }
 }
 
 
@@ -21,19 +22,36 @@ public enum MessageKind {
 
 class TextMessage: MessageType {
     var kind: MessageKind = .text
-    var text: String = ""
+    var text: String
+    
+    init(text: String) {
+        self.text = text
+    }
+    
+    convenience init() {
+        self.init(text: "")
+    }
 }
 
 class AudioMessage: MessageType {
+    var text: String { data }
     var kind: MessageKind = .audio
-    var data: String = ""
+    var data: String
+    
+    init() {
+        data = "Voice message"
+    }
 }
 
 
 class TableViewControllerWithLabels: UIViewController {
     
-    var messageArray: [String] = ["Hi", "Hi", "How are you?", "I'am fine, thanks"]
-    var flag = 1
+    var messageArray: [MessageType] = [
+//    TextMessage(text: "Hi"),
+//    TextMessage(text: "Hi!"),
+//    TextMessage(text: "How are you?"),
+//    TextMessage(text: "I'am fine, thanks! What about you?"),
+    ]
     
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var messageOutlet: UITextField!
@@ -45,16 +63,18 @@ class TableViewControllerWithLabels: UIViewController {
         if message == "" {
             return
         }
-        messageArray.append(message)
+        messageArray.append(TextMessage(text: message))
         messageOutlet.text = ""
         tableView.reloadData()
         tableView.scrollToRow(at: IndexPath(item: messageArray.count - 1, section: 0), at: .bottom, animated: true)
         sendButton.setBackgroundImage(UIImage.init(systemName: "mic.circle.fill"), for: .normal)
     }
+    
     @IBAction func longPressButton(_ sender: Any) {
         if messageOutlet.text == "" {
             if longPressOutlet.state == .began {
-                messageArray.append("mic_rec")
+                
+                messageArray.append(AudioMessage())
             } else if longPressOutlet.state == .ended {
                 sendVoiceMessage()
             }
@@ -71,8 +91,6 @@ class TableViewControllerWithLabels: UIViewController {
     }
     
     @objc func textFieldDidChange(_ textField: UITextField) {
-        
-        //        messageOutlet.text?.trimmingCharacters(in: .whitespacesAndNewlines)
         if messageOutlet.text != "" {
             sendButton.setBackgroundImage(UIImage.init(systemName: "arrow.up.circle.fill"), for: .normal)
         } else {
@@ -96,8 +114,6 @@ class TableViewControllerWithLabels: UIViewController {
           object: nil)
         
         messageOutlet.delegate = self
-        
-        sendButton.isEnabled = true
         sendButton.setBackgroundImage(UIImage.init(systemName: "mic.circle.fill"), for: .normal)
         messageOutlet.addTarget(self, action: #selector(TableViewControllerWithLabels.textFieldDidChange(_:)), for: UIControl.Event.editingChanged)
     }
@@ -139,53 +155,49 @@ extension TableViewControllerWithLabels: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let text = messageArray[indexPath.row].text
         if indexPath.row % 2 == 0 {
-            if messageArray[indexPath.row] == "mic_rec" {
+            if messageArray[indexPath.row].kind == .audio {
                 let cell = tableView.dequeueReusableCell(withIdentifier: "oddCellWithVoice", for: indexPath) as! OddCellWithVoice
-                cell.voiceMessageLabel.textColor = .white
-                cell.voiceMessageLabel.textAlignment = .left
-                cell.voiceMessageLabel.backgroundColor = .clear
-                cell.containerView.layer.backgroundColor = UIColor.systemBlue.cgColor
-                cell.containerView.layer.borderColor = UIColor.black.cgColor
-                cell.containerView.layer.borderWidth = 1
-                cell.containerView.layer.cornerRadius = 10
+                setupLabel(label: cell.label, text: text)
+                setupContainer(containerView: cell.containerView, color: UIColor.systemBlue.cgColor)
                 return cell
-            } else {
+            }
+            if messageArray[indexPath.row].kind == .text {
                 let cell = tableView.dequeueReusableCell(withIdentifier: "oddCellWithLabel", for: indexPath) as! OddCellWithLabel
-                cell.label.textColor = .white
-                cell.label.text = messageArray[indexPath.row]
-                cell.label.textAlignment = .left
-                cell.label.backgroundColor = .clear
-                cell.containerView.layer.backgroundColor = UIColor.systemBlue.cgColor
-                cell.containerView.layer.borderColor = UIColor.black.cgColor
-                cell.containerView.layer.borderWidth = 1
-                cell.containerView.layer.cornerRadius = 10
+                setupLabel(label: cell.label, text: text)
+                setupContainer(containerView: cell.containerView, color: UIColor.systemBlue.cgColor)
                 return cell
             }
         } else {
-            if messageArray[indexPath.row] == "mic_rec" {
+            if messageArray[indexPath.row].kind == .audio {
                 let cell = tableView.dequeueReusableCell(withIdentifier: "evenCellWithVoice", for: indexPath) as! EvenCellVithVoice
-                cell.voiceMessageLabel.textColor = .white
-                cell.voiceMessageLabel.textAlignment = .left
-                cell.voiceMessageLabel.backgroundColor = .clear
-                cell.containerView.layer.backgroundColor = UIColor.systemGreen.cgColor
-                cell.containerView.layer.borderColor = UIColor.black.cgColor
-                cell.containerView.layer.borderWidth = 1
-                cell.containerView.layer.cornerRadius = 10
+                setupLabel(label: cell.label, text: text)
+                setupContainer(containerView: cell.containerView, color: UIColor.systemGreen.cgColor)
                 return cell
-            } else {
+            }
+            if messageArray[indexPath.row].kind == .text {
                 let cell = tableView.dequeueReusableCell(withIdentifier: "evenCellWithLabel", for: indexPath) as! EvenCellWithLabel
-                cell.label.textColor = .white
-                cell.label.text = messageArray[indexPath.row]
-                cell.label.textAlignment = .left
-                cell.label.backgroundColor = .clear
-                cell.containerView.layer.backgroundColor = UIColor.systemGreen.cgColor
-                cell.containerView.layer.borderColor = UIColor.black.cgColor
-                cell.containerView.layer.borderWidth = 1
-                cell.containerView.layer.cornerRadius = 10
+                setupLabel(label: cell.label, text: text)
+                setupContainer(containerView: cell.containerView, color: UIColor.systemGreen.cgColor)
                 return cell
             }
         }
+        return UITableViewCell()
+    }
+    
+    private func setupLabel(label: UILabel, text: String) {
+        label.textColor = .white
+        label.textAlignment = .left
+        label.backgroundColor = .clear
+        label.text = text
+    }
+    
+    private func setupContainer(containerView: UIView, color: CGColor) {
+        containerView.layer.backgroundColor = color
+        containerView.layer.borderColor = UIColor.black.cgColor
+        containerView.layer.borderWidth = 1
+        containerView.layer.cornerRadius = 10
     }
 }
 

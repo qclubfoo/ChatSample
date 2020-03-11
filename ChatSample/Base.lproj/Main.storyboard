@@ -10,8 +10,7 @@
         <!--Table View Controller With Labels-->
         <scene sceneID="s6k-NX-FmP">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="vME-Wo-xDV" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-                <viewController id="XBd-gh-rKN" customClass="TableViewControllerWithLabels" customModule="DelegateTest" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="XBd-gh-rKN" customClass="TableViewControllerWithLabels" customModule="ChatSample" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Jqi-4N-TyN">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -38,7 +37,7 @@
                                 <rect key="frame" x="0.0" y="88" width="414" height="714"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="oddCellWithLabel" id="Aly-8R-eC2" customClass="OddCellWithLabel" customModule="DelegateTest" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="oddCellWithLabel" id="Aly-8R-eC2" customClass="OddCellWithLabel" customModule="ChatSample" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="414" height="46.5"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Aly-8R-eC2" id="7o0-N0-qSs">
@@ -76,7 +75,7 @@
                                             <outlet property="label" destination="RTF-wc-vHB" id="fQ1-8w-k9o"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="evenCellWithLabel" id="A8T-sc-DC6" customClass="EvenCellWithLabel" customModule="DelegateTest" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="evenCellWithLabel" id="A8T-sc-DC6" customClass="EvenCellWithLabel" customModule="ChatSample" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="74.5" width="414" height="41.5"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="A8T-sc-DC6" id="yzu-rM-i6e">
@@ -114,7 +113,7 @@
                                             <outlet property="label" destination="q70-lh-55g" id="Yb7-Uw-g0e"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="oddCellWithVoice" id="u6w-uM-m9E" customClass="OddCellWithVoice" customModule="DelegateTest" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="oddCellWithVoice" id="u6w-uM-m9E" customClass="OddCellWithVoice" customModule="ChatSample" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="116" width="414" height="38"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="u6w-uM-m9E" id="Pi0-2R-z21">
@@ -160,11 +159,11 @@
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="containerView" destination="B6R-Uu-20q" id="RfF-Wx-ka3"/>
+                                            <outlet property="label" destination="VZc-aY-AOJ" id="NsA-4V-Jeg"/>
                                             <outlet property="playButton" destination="rfx-WB-obg" id="WB6-Ta-RID"/>
-                                            <outlet property="voiceMessageLabel" destination="VZc-aY-AOJ" id="LNW-xk-Cd9"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="evenCellWithVoice" id="gdu-c8-FsG" customClass="EvenCellVithVoice" customModule="DelegateTest" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="evenCellWithVoice" id="gdu-c8-FsG" customClass="EvenCellVithVoice" customModule="ChatSample" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="154" width="414" height="38"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="gdu-c8-FsG" id="KP2-eM-JwV">
@@ -210,8 +209,8 @@
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="containerView" destination="5GX-S0-wS9" id="Mka-H9-BIZ"/>
+                                            <outlet property="label" destination="ZcF-71-X2E" id="IBl-wJ-eOE"/>
                                             <outlet property="playButton" destination="kuD-tw-Wab" id="CXr-hb-eHu"/>
-                                            <outlet property="voiceMessageLabel" destination="ZcF-71-X2E" id="48V-Zx-m0O"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -249,6 +248,7 @@
                         <outlet property="tableView" destination="XM1-RA-cmS" id="Rh0-aX-kLp"/>
                     </connections>
                 </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="vME-Wo-xDV" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <pongPressGestureRecognizer allowableMovement="10" minimumPressDuration="0.5" id="dxm-9y-xa5" userLabel="LongPressSendVoiceMessage">
                     <connections>
                         <action selector="longPressButton:" destination="XBd-gh-rKN" id="69w-L1-6tA"/>

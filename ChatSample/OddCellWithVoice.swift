@@ -12,7 +12,7 @@ class OddCellWithVoice: UITableViewCell {
 
     @IBOutlet weak var containerView: UIView!
     @IBOutlet weak var playButton: UIButton!
-    @IBOutlet weak var voiceMessageLabel: UILabel!
+    @IBOutlet weak var label: UILabel!
     
     
 }
