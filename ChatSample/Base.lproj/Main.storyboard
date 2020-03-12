@@ -254,7 +254,7 @@
                     <navigationItem key="navigationItem" id="DrB-ve-s6U"/>
                     <connections>
                         <outlet property="longPressOutlet" destination="dxm-9y-xa5" id="0n9-OL-bGm"/>
-                        <outlet property="messageOutlet" destination="Qlh-KU-KWP" id="x1N-gB-zCy"/>
+                        <outlet property="messageTextField" destination="Qlh-KU-KWP" id="x1N-gB-zCy"/>
                         <outlet property="sendButton" destination="GcP-2h-kL3" id="TXb-Ob-gyv"/>
                         <outlet property="tableView" destination="XM1-RA-cmS" id="Rh0-aX-kLp"/>
                     </connections>

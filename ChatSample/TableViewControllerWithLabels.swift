@@ -7,8 +7,8 @@
 //
 
 import UIKit
-import LocalAuthentication
 import AVFoundation
+import MultiSlider
 
 protocol MessageType {
     var kind: MessageKind { get }
@@ -47,6 +47,8 @@ class AudioMessage: MessageType {
 
 class TableViewControllerWithLabels: UIViewController {
     
+    var editViewController = EditViewController()
+    
     var messageArray: [MessageType] = [
 //    TextMessage(text: "Hi"),
 //    TextMessage(text: "Hi!"),
@@ -61,7 +63,7 @@ class TableViewControllerWithLabels: UIViewController {
     var player: AVAudioPlayer?
     
     @IBOutlet weak var tableView: UITableView!
-    @IBOutlet weak var messageOutlet: UITextField!
+    @IBOutlet weak var messageTextField: UITextField!
     @IBOutlet weak var sendButton: UIButton!
     @IBOutlet var longPressOutlet: UILongPressGestureRecognizer!
     
@@ -69,25 +71,32 @@ class TableViewControllerWithLabels: UIViewController {
     
     
     @IBAction func sendMessageButton(_ sender: UIButton) {
-        guard let message = messageOutlet.text else { return }
+        guard let message = messageTextField.text else { return }
         if message == "" {
             return
         }
         messageArray.append(TextMessage(text: message))
-        messageOutlet.text = ""
+        messageTextField.text = ""
         tableView.reloadData()
         tableView.scrollToRow(at: IndexPath(item: messageArray.count - 1, section: 0), at: .bottom, animated: true)
         sendButton.setBackgroundImage(UIImage.init(systemName: "mic.circle.fill"), for: .normal)
     }
     
     @IBAction func longPressButton(_ sender: Any) {
-        if messageOutlet.text == "" {
+        if messageTextField.text == "" {
             let recName = "VoiceMessage_\(voiceRecordNumber).m4a"
             let url = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0].appendingPathComponent(recName)
 
             if longPressOutlet.state == .began {
                 if audioRecorder == nil {
                     startRecorder(recordUrl: url)
+//                    UIView.animate(withDuration: 0.7, delay: 0, options: .curveEaseInOut, animations: {
+//                        let frame = self.messageOutlet.frame
+//                        self.messageOutlet.frame = CGRect(x: frame.minX, y: frame.minY, width: frame.width - 100, height: frame.height)
+//                    })
+                    
+//                    messageOutlet.leadingAnchor.constraint(equalTo: sendButton.leadingAnchor, constant: 10).isActive = true
+//                    messageOutlet.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
                 }
             } else if longPressOutlet.state == .ended {
                 if audioRecorder != nil {
@@ -101,7 +110,7 @@ class TableViewControllerWithLabels: UIViewController {
     }
     
     @IBAction func hidingKeyboardTap(_ sender: Any) {
-        messageOutlet.resignFirstResponder()
+        messageTextField.resignFirstResponder()
     }
     
     @IBAction func oddPlayButtonTapped(_ sender: CustomPlayButton) {
@@ -178,7 +187,7 @@ class TableViewControllerWithLabels: UIViewController {
     }
     
     @objc func textFieldDidChange(_ textField: UITextField) {
-        if messageOutlet.text != "" {
+        if messageTextField.text != "" {
             sendButton.setBackgroundImage(UIImage.init(systemName: "arrow.up.circle.fill"), for: .normal)
         } else {
             sendButton.setBackgroundImage(UIImage.init(systemName: "mic.circle.fill"), for: .normal)
@@ -219,9 +228,9 @@ class TableViewControllerWithLabels: UIViewController {
           name: UIResponder.keyboardWillHideNotification,
           object: nil)
         
-        messageOutlet.delegate = self
+        messageTextField.delegate = self
         sendButton.setBackgroundImage(UIImage.init(systemName: "mic.circle.fill"), for: .normal)
-        messageOutlet.addTarget(self, action: #selector(TableViewControllerWithLabels.textFieldDidChange(_:)), for: UIControl.Event.editingChanged)
+        messageTextField.addTarget(self, action: #selector(TableViewControllerWithLabels.textFieldDidChange(_:)), for: UIControl.Event.editingChanged)
     }
     
     override func viewWillDisappear(_ animated: Bool) {
