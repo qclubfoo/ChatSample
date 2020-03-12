@@ -1,0 +1,1257 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 51;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		04B7F7C9E32EBF66CD80D843B44DA222 /* Swift+Sweeter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E21E3C5829BAB7F7430F642314E1BFAC /* Swift+Sweeter.swift */; };
+		08C02AB0707A222669F57C7C0F9DF2F8 /* AvailableHapticFeedback.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A8FA7F46C352D70D1D9860989036BE5 /* AvailableHapticFeedback.framework */; };
+		0FAF10B953348E4809D9C0E0D90373AC /* MultiSliderExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE7F50A0C000CDC8822F4CA07EE1C662 /* MultiSliderExtensions.swift */; };
+		157083BA8F7899086152E79368950E91 /* Pods-ChatSample-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = DD8F66BDA93ECA4A67B1A0B38087E216 /* Pods-ChatSample-dummy.m */; };
+		1C70499DBB19E6F16AA731D3EEFEF379 /* AvailableHapticFeedback.swift in Sources */ = {isa = PBXBuildFile; fileRef = 266B5038464F17D9168F908ABC89DAFC /* AvailableHapticFeedback.swift */; };
+		1F0BF72601371B45C31EB0357E374AEB /* SweeterSwift-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = E93FDCD05CBEB5B637AC113EBEFDC340 /* SweeterSwift-dummy.m */; };
+		25932891993D663085D9E559A87B2B9F /* AudioVisualizationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D70EDCC6255396CF9D0A2AFE22D7E8A2 /* AudioVisualizationView.swift */; };
+		3346DBAD90FF44438585AAEB1F45E65A /* MultiSlider-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 10975A21FD616EDB35B1885ACE699A45 /* MultiSlider-dummy.m */; };
+		36D75CB53A4B99F1F5E32F68DAC33661 /* MultiSlider+Drag.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72B460E7EC8EDDBAF0FEAB6594446239 /* MultiSlider+Drag.swift */; };
+		378FB83D16D1775A687B3E3F10C6EEA4 /* SoundWave-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 39A7AD73DC2E020344016C7DADD4D246 /* SoundWave-dummy.m */; };
+		3A89DB35B5BC3B209426A1D62F9CB0B1 /* String+Sweeter.swift in Sources */ = {isa = PBXBuildFile; fileRef = C52CDB47031A28BEC90F0E2BE495AED3 /* String+Sweeter.swift */; };
+		426D653DE601DC368465AAAB635BAA76 /* NSAttributedString+Sweeter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 655966E3F29E96B0B38B04CE86C23909 /* NSAttributedString+Sweeter.swift */; };
+		443CF6A26998A642A34DB1B97B8E465D /* TimeInterval+Sweeter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E916592FA6F9E84144DBD4EFDF9D372 /* TimeInterval+Sweeter.swift */; };
+		44EFF6FB94B5404CE0B3311CE62C8449 /* Chronometer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DCB1A49CB1A67456B71146D342BFE65 /* Chronometer.swift */; };
+		4CB9FD431FB20AE7D8D3EFF7CAB104E2 /* UIView+Sweeter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C38621764429994BC1DED7846F3CC98 /* UIView+Sweeter.swift */; };
+		6065B6A7DD8827C0C12518F0DF6D0CFE /* SweeterSwift-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 9859C108301A81597A423BDF3B405CBA /* SweeterSwift-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		60E8AE64ABD5300742412EFEF2B57006 /* UIApplication+Sweeter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 287F42580807EE5B5C3667BFF21E6BD7 /* UIApplication+Sweeter.swift */; };
+		65A022FAE15175566197A94A7A3BD8F0 /* UIStackView+Sweeter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 571DD6095BCC10593188B2705A86EAF9 /* UIStackView+Sweeter.swift */; };
+		66F841179D74843A535AAB86E5777F5C /* AvailableHapticFeedback-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 4582320ABAAD8168DB4B919731CF2CD3 /* AvailableHapticFeedback-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		6DB5EB233C9105978FEBF1661CAB69AA /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B6DEA8D1DA2DC676ADA162AF5D719AFF /* Foundation.framework */; };
+		729444C129930B0D6D866F472B9135A2 /* Bundle+Sweeter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07403125E50DB7FF30AAB76EB71DE6CB /* Bundle+Sweeter.swift */; };
+		74477FD04FF4A0C89FE017BB57F83093 /* AudioVisualizationView.xib in Sources */ = {isa = PBXBuildFile; fileRef = 70CBDDE2F4983C8D4895BF3B022A0B76 /* AudioVisualizationView.xib */; };
+		75EEAD1A654E8D0FDE8AA1B3692D519E /* MultiSlider+Internal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 300FE52F4B778A849647A163E5E8B874 /* MultiSlider+Internal.swift */; };
+		7668FD89EB71B49469605A8D8DDEA892 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B6DEA8D1DA2DC676ADA162AF5D719AFF /* Foundation.framework */; };
+		7773D89CDF2497CD790455F96E9CBD6F /* Codable+Sweeter.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBCCA49F6008B4BF4BEF9EF056137CA2 /* Codable+Sweeter.swift */; };
+		8390D125170BF642F18ABA21E6AF3600 /* NSObject+Sweeter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C0B313DDF9CE6786A850B0122E9AAB7 /* NSObject+Sweeter.swift */; };
+		84EB4E634F9BB3D8E51F4E0ED1D3EA7F /* UITextView+Sweeter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3572C54C8DED4D05DD989F8BB47CC8C /* UITextView+Sweeter.swift */; };
+		9703631ED85E22B96512F7490E922A24 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B6DEA8D1DA2DC676ADA162AF5D719AFF /* Foundation.framework */; };
+		A690A50B74FAE1B13D27BEA699FC925D /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B6DEA8D1DA2DC676ADA162AF5D719AFF /* Foundation.framework */; };
+		B3095E9A06940910D5302FE1F52FB2BA /* SweeterSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 514F0C652AF807BC850BC2F0A2DE335A /* SweeterSwift.framework */; };
+		B3728C258C79E9AE55E1F19D6515A154 /* MultiSlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = E10F509370E3FFE38231C935D57722E0 /* MultiSlider.swift */; };
+		CA6D95D21E2DF2FE16811E5A472434C3 /* SoundWave-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 55845175D8EFD7917E68C1FBC80A0464 /* SoundWave-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		CADD243602F8B795242D2C7CC9625FAF /* DateFormatter+Sweeter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51C4A14E3B678EA0D7F5F13ACB18794D /* DateFormatter+Sweeter.swift */; };
+		CBB8113C245DD01F102A60CB516D4211 /* UIViewController+Sweeter.swift in Sources */ = {isa = PBXBuildFile; fileRef = DADB2E0D9E56748A2C9844DCD641CCE9 /* UIViewController+Sweeter.swift */; };
+		D04291D05B105796BD79C03AF28184AA /* NSManagedObjectContext+Sweeter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F898A0214DC1E9C3AC7257FC88D63C7D /* NSManagedObjectContext+Sweeter.swift */; };
+		D208245D3E5494744639E639F23D3DE0 /* Pods-ChatSample-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = EE186CF7DB02CF5395866FCBBF14F4C6 /* Pods-ChatSample-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		D668284B827A1188E3F30B1399F17239 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B6DEA8D1DA2DC676ADA162AF5D719AFF /* Foundation.framework */; };
+		D6C07782CA75326ABCCB1BE480D37115 /* MultiSlider-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 84BFFB7C10FA245724BEA12735C3A468 /* MultiSlider-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		DE6872BD48CC82DE270DD8B721AD91B5 /* AvailableHapticFeedback-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = C8ADCD114283C8CA5D8A0AE4FDCB348C /* AvailableHapticFeedback-dummy.m */; };
+		E48C7231C212D83CE25A2990D0318C88 /* BaseNibView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54C42CC1C0D93FD4BA1589B070B59267 /* BaseNibView.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		4E9C89FC6414A7887407F00898818D57 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 6819F499159C87193DDD7D51504DD6C1;
+			remoteInfo = SweeterSwift;
+		};
+		52DD01801435F34AA6DF21D3F7D3192E /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 3512EBC5B210EF5D4D638A864E7E2A40;
+			remoteInfo = AvailableHapticFeedback;
+		};
+		5B24EB9FC7EE218DF6CE5E4D35841636 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 3512EBC5B210EF5D4D638A864E7E2A40;
+			remoteInfo = AvailableHapticFeedback;
+		};
+		7A55B22DD8769D442D331D87D89A0AFB /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = F69984ED0D5D3CC1B9D170E4AC78A24E;
+			remoteInfo = MultiSlider;
+		};
+		85EE0F52DDE5C0B6BF692A73A461BBDB /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = F0987D2BA445E423F5BB22D4899D2E22;
+			remoteInfo = SoundWave;
+		};
+		9259EA500593752D7FAA0D83FC3FF680 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 6819F499159C87193DDD7D51504DD6C1;
+			remoteInfo = SweeterSwift;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		053539D842BDB324E18D04110DC4AA34 /* Pods-ChatSample-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-ChatSample-acknowledgements.plist"; sourceTree = "<group>"; };
+		07403125E50DB7FF30AAB76EB71DE6CB /* Bundle+Sweeter.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "Bundle+Sweeter.swift"; path = "Source/Bundle+Sweeter.swift"; sourceTree = "<group>"; };
+		091CC3688EB94BFD3C3B935383727693 /* AvailableHapticFeedback.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = AvailableHapticFeedback.xcconfig; sourceTree = "<group>"; };
+		0DCB1A49CB1A67456B71146D342BFE65 /* Chronometer.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Chronometer.swift; path = SoundWave/Classes/Chronometer.swift; sourceTree = "<group>"; };
+		10975A21FD616EDB35B1885ACE699A45 /* MultiSlider-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "MultiSlider-dummy.m"; sourceTree = "<group>"; };
+		266B5038464F17D9168F908ABC89DAFC /* AvailableHapticFeedback.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = AvailableHapticFeedback.swift; path = Sources/AvailableHapticFeedback.swift; sourceTree = "<group>"; };
+		287F42580807EE5B5C3667BFF21E6BD7 /* UIApplication+Sweeter.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "UIApplication+Sweeter.swift"; path = "Source/UIApplication+Sweeter.swift"; sourceTree = "<group>"; };
+		300FE52F4B778A849647A163E5E8B874 /* MultiSlider+Internal.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "MultiSlider+Internal.swift"; path = "Sources/MultiSlider+Internal.swift"; sourceTree = "<group>"; };
+		38EDDAFE01DF283B206B4506DC66B552 /* SoundWave.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = SoundWave.modulemap; sourceTree = "<group>"; };
+		39A7AD73DC2E020344016C7DADD4D246 /* SoundWave-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "SoundWave-dummy.m"; sourceTree = "<group>"; };
+		3A8FA7F46C352D70D1D9860989036BE5 /* AvailableHapticFeedback.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = AvailableHapticFeedback.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		3CAC30946AD5D8169327E87D54A181D4 /* Pods-ChatSample-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-ChatSample-Info.plist"; sourceTree = "<group>"; };
+		3ECE9F6E7A13CE10B5D5370098704DA2 /* SoundWave-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "SoundWave-Info.plist"; sourceTree = "<group>"; };
+		3EEDC711CC8CD489BD1103A2B7EBE134 /* AvailableHapticFeedback.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = AvailableHapticFeedback.modulemap; sourceTree = "<group>"; };
+		41E226624BB13FA2314337BF1098F4EF /* Pods-ChatSample.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-ChatSample.modulemap"; sourceTree = "<group>"; };
+		4582320ABAAD8168DB4B919731CF2CD3 /* AvailableHapticFeedback-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "AvailableHapticFeedback-umbrella.h"; sourceTree = "<group>"; };
+		47E3E8B2975649810E95260DD114F401 /* Pods-ChatSample-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-ChatSample-acknowledgements.markdown"; sourceTree = "<group>"; };
+		5055C01DD96869BD98C662C775EEC70F /* Pods-ChatSample.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-ChatSample.release.xcconfig"; sourceTree = "<group>"; };
+		514F0C652AF807BC850BC2F0A2DE335A /* SweeterSwift.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SweeterSwift.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		51C4A14E3B678EA0D7F5F13ACB18794D /* DateFormatter+Sweeter.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "DateFormatter+Sweeter.swift"; path = "Source/DateFormatter+Sweeter.swift"; sourceTree = "<group>"; };
+		54C42CC1C0D93FD4BA1589B070B59267 /* BaseNibView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = BaseNibView.swift; path = SoundWave/Classes/BaseNibView.swift; sourceTree = "<group>"; };
+		55845175D8EFD7917E68C1FBC80A0464 /* SoundWave-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "SoundWave-umbrella.h"; sourceTree = "<group>"; };
+		571DD6095BCC10593188B2705A86EAF9 /* UIStackView+Sweeter.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "UIStackView+Sweeter.swift"; path = "Source/UIStackView+Sweeter.swift"; sourceTree = "<group>"; };
+		655966E3F29E96B0B38B04CE86C23909 /* NSAttributedString+Sweeter.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "NSAttributedString+Sweeter.swift"; path = "Source/NSAttributedString+Sweeter.swift"; sourceTree = "<group>"; };
+		684D7B4E98DEC7C7B322CF7AE425E212 /* Pods-ChatSample-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-ChatSample-frameworks.sh"; sourceTree = "<group>"; };
+		6B714E2025BCC188EA718EF6775C6655 /* SweeterSwift-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "SweeterSwift-prefix.pch"; sourceTree = "<group>"; };
+		70CBDDE2F4983C8D4895BF3B022A0B76 /* AudioVisualizationView.xib */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = file.xib; name = AudioVisualizationView.xib; path = SoundWave/Classes/AudioVisualizationView.xib; sourceTree = "<group>"; };
+		72B460E7EC8EDDBAF0FEAB6594446239 /* MultiSlider+Drag.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "MultiSlider+Drag.swift"; path = "Sources/MultiSlider+Drag.swift"; sourceTree = "<group>"; };
+		75CFA728078C05B239620B29E95E0A49 /* Pods-ChatSample.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-ChatSample.debug.xcconfig"; sourceTree = "<group>"; };
+		7B08D78734C4F17B552554EB72747F4E /* AvailableHapticFeedback-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "AvailableHapticFeedback-Info.plist"; sourceTree = "<group>"; };
+		80C0F7CA2739D44C60ECE7C37FA59B31 /* SoundWave.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = SoundWave.xcconfig; sourceTree = "<group>"; };
+		837D3A0E9766B31B85D562625D6453FF /* MultiSlider.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = MultiSlider.modulemap; sourceTree = "<group>"; };
+		843FFB1A5DEC64169D3AD840635DA0CC /* SoundWave.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = SoundWave.framework; path = SoundWave.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		84BFFB7C10FA245724BEA12735C3A468 /* MultiSlider-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "MultiSlider-umbrella.h"; sourceTree = "<group>"; };
+		984566925CE9D720A1A55D678229302D /* SweeterSwift-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "SweeterSwift-Info.plist"; sourceTree = "<group>"; };
+		9859C108301A81597A423BDF3B405CBA /* SweeterSwift-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "SweeterSwift-umbrella.h"; sourceTree = "<group>"; };
+		9C0B313DDF9CE6786A850B0122E9AAB7 /* NSObject+Sweeter.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "NSObject+Sweeter.swift"; path = "Source/NSObject+Sweeter.swift"; sourceTree = "<group>"; };
+		9C38621764429994BC1DED7846F3CC98 /* UIView+Sweeter.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "UIView+Sweeter.swift"; path = "Source/UIView+Sweeter.swift"; sourceTree = "<group>"; };
+		9D940727FF8FB9C785EB98E56350EF41 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		9E916592FA6F9E84144DBD4EFDF9D372 /* TimeInterval+Sweeter.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "TimeInterval+Sweeter.swift"; path = "Source/TimeInterval+Sweeter.swift"; sourceTree = "<group>"; };
+		A62CC60FE76094BE86FCBCF13461BD51 /* MultiSlider-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "MultiSlider-prefix.pch"; sourceTree = "<group>"; };
+		B6DEA8D1DA2DC676ADA162AF5D719AFF /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS12.2.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
+		B76CD9F952582A6A4387D799501B3950 /* SweeterSwift.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = SweeterSwift.framework; path = SweeterSwift.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		BC109B47099368190583274D77CA32EC /* SweeterSwift.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = SweeterSwift.xcconfig; sourceTree = "<group>"; };
+		C52CDB47031A28BEC90F0E2BE495AED3 /* String+Sweeter.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "String+Sweeter.swift"; path = "Source/String+Sweeter.swift"; sourceTree = "<group>"; };
+		C8ADCD114283C8CA5D8A0AE4FDCB348C /* AvailableHapticFeedback-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "AvailableHapticFeedback-dummy.m"; sourceTree = "<group>"; };
+		C97130705A69FEDF91B2C48B83B787F4 /* Pods_ChatSample.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_ChatSample.framework; path = "Pods-ChatSample.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		CB6618E54DA48B9A789CA4076AB086DC /* AvailableHapticFeedback-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "AvailableHapticFeedback-prefix.pch"; sourceTree = "<group>"; };
+		CE7F50A0C000CDC8822F4CA07EE1C662 /* MultiSliderExtensions.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = MultiSliderExtensions.swift; path = Sources/MultiSliderExtensions.swift; sourceTree = "<group>"; };
+		D306F3B73B0E0A789613827FE76170DA /* AvailableHapticFeedback.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = AvailableHapticFeedback.framework; path = AvailableHapticFeedback.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		D3572C54C8DED4D05DD989F8BB47CC8C /* UITextView+Sweeter.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "UITextView+Sweeter.swift"; path = "Source/UITextView+Sweeter.swift"; sourceTree = "<group>"; };
+		D70EDCC6255396CF9D0A2AFE22D7E8A2 /* AudioVisualizationView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = AudioVisualizationView.swift; path = SoundWave/Classes/AudioVisualizationView.swift; sourceTree = "<group>"; };
+		DADB2E0D9E56748A2C9844DCD641CCE9 /* UIViewController+Sweeter.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "UIViewController+Sweeter.swift"; path = "Source/UIViewController+Sweeter.swift"; sourceTree = "<group>"; };
+		DD8F66BDA93ECA4A67B1A0B38087E216 /* Pods-ChatSample-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-ChatSample-dummy.m"; sourceTree = "<group>"; };
+		E10F509370E3FFE38231C935D57722E0 /* MultiSlider.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = MultiSlider.swift; path = Sources/MultiSlider.swift; sourceTree = "<group>"; };
+		E21E3C5829BAB7F7430F642314E1BFAC /* Swift+Sweeter.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "Swift+Sweeter.swift"; path = "Source/Swift+Sweeter.swift"; sourceTree = "<group>"; };
+		E8B09AFCBB65FDDE42EDE0713DF6822D /* SoundWave-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "SoundWave-prefix.pch"; sourceTree = "<group>"; };
+		E93FDCD05CBEB5B637AC113EBEFDC340 /* SweeterSwift-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "SweeterSwift-dummy.m"; sourceTree = "<group>"; };
+		EB0DF0C749F3ADB46DFC7055DD5560E2 /* MultiSlider.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = MultiSlider.xcconfig; sourceTree = "<group>"; };
+		ED695CC0BD5265A6EB032F36ACCCB8A1 /* MultiSlider-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "MultiSlider-Info.plist"; sourceTree = "<group>"; };
+		EE186CF7DB02CF5395866FCBBF14F4C6 /* Pods-ChatSample-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-ChatSample-umbrella.h"; sourceTree = "<group>"; };
+		F898A0214DC1E9C3AC7257FC88D63C7D /* NSManagedObjectContext+Sweeter.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "NSManagedObjectContext+Sweeter.swift"; path = "Source/NSManagedObjectContext+Sweeter.swift"; sourceTree = "<group>"; };
+		F913DC8774434D191CA907FD82F57D7D /* SweeterSwift.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = SweeterSwift.modulemap; sourceTree = "<group>"; };
+		FB710FE125F9F03098F08A750214F3A2 /* MultiSlider.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = MultiSlider.framework; path = MultiSlider.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		FBCCA49F6008B4BF4BEF9EF056137CA2 /* Codable+Sweeter.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "Codable+Sweeter.swift"; path = "Source/Codable+Sweeter.swift"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		2E74A90B4564CF6C7F5CD531BB42C82D /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9703631ED85E22B96512F7490E922A24 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		3898A4678B18213325ED9AAEE1646D6C /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7668FD89EB71B49469605A8D8DDEA892 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		55DE6C9EE48EDD6EFD9B9CF82BAA7500 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D668284B827A1188E3F30B1399F17239 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B0D96F397375B310410C8BC633BCA01B /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A690A50B74FAE1B13D27BEA699FC925D /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F52ECB46AED2F548087A7DAB0AF4CF37 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				08C02AB0707A222669F57C7C0F9DF2F8 /* AvailableHapticFeedback.framework in Frameworks */,
+				6DB5EB233C9105978FEBF1661CAB69AA /* Foundation.framework in Frameworks */,
+				B3095E9A06940910D5302FE1F52FB2BA /* SweeterSwift.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		0BE424BB4C154EE71910C599AD80427D /* MultiSlider */ = {
+			isa = PBXGroup;
+			children = (
+				E10F509370E3FFE38231C935D57722E0 /* MultiSlider.swift */,
+				72B460E7EC8EDDBAF0FEAB6594446239 /* MultiSlider+Drag.swift */,
+				300FE52F4B778A849647A163E5E8B874 /* MultiSlider+Internal.swift */,
+				CE7F50A0C000CDC8822F4CA07EE1C662 /* MultiSliderExtensions.swift */,
+				D23185E44F7421D57F6AD1BF92A9AA8C /* Support Files */,
+			);
+			name = MultiSlider;
+			path = MultiSlider;
+			sourceTree = "<group>";
+		};
+		1969E707D6F435EB4FE35BF7B0F05D96 /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				F913DC8774434D191CA907FD82F57D7D /* SweeterSwift.modulemap */,
+				BC109B47099368190583274D77CA32EC /* SweeterSwift.xcconfig */,
+				E93FDCD05CBEB5B637AC113EBEFDC340 /* SweeterSwift-dummy.m */,
+				984566925CE9D720A1A55D678229302D /* SweeterSwift-Info.plist */,
+				6B714E2025BCC188EA718EF6775C6655 /* SweeterSwift-prefix.pch */,
+				9859C108301A81597A423BDF3B405CBA /* SweeterSwift-umbrella.h */,
+			);
+			name = "Support Files";
+			path = "../Target Support Files/SweeterSwift";
+			sourceTree = "<group>";
+		};
+		359D106E994BCA77A73AEAFE0A36B469 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				A423C24D8C25F81A5DDBC71D767805C5 /* AvailableHapticFeedback */,
+				0BE424BB4C154EE71910C599AD80427D /* MultiSlider */,
+				93D9DFC81B31E8C233EB84EE5A711661 /* SoundWave */,
+				F1F78BF6FB555F8AC6E69B71EE0056D8 /* SweeterSwift */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		3A79034340386D2E60867BC68CB92525 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				D306F3B73B0E0A789613827FE76170DA /* AvailableHapticFeedback.framework */,
+				FB710FE125F9F03098F08A750214F3A2 /* MultiSlider.framework */,
+				C97130705A69FEDF91B2C48B83B787F4 /* Pods_ChatSample.framework */,
+				843FFB1A5DEC64169D3AD840635DA0CC /* SoundWave.framework */,
+				B76CD9F952582A6A4387D799501B3950 /* SweeterSwift.framework */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		3C896FD53AD6116C7ACC35B5B0946DB0 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				3A8FA7F46C352D70D1D9860989036BE5 /* AvailableHapticFeedback.framework */,
+				514F0C652AF807BC850BC2F0A2DE335A /* SweeterSwift.framework */,
+				80D24C3504546ED0D6B7501714184CD1 /* iOS */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		52DA2FD0B9C2625B0F66E7289E6AEB7B /* Pods-ChatSample */ = {
+			isa = PBXGroup;
+			children = (
+				41E226624BB13FA2314337BF1098F4EF /* Pods-ChatSample.modulemap */,
+				47E3E8B2975649810E95260DD114F401 /* Pods-ChatSample-acknowledgements.markdown */,
+				053539D842BDB324E18D04110DC4AA34 /* Pods-ChatSample-acknowledgements.plist */,
+				DD8F66BDA93ECA4A67B1A0B38087E216 /* Pods-ChatSample-dummy.m */,
+				684D7B4E98DEC7C7B322CF7AE425E212 /* Pods-ChatSample-frameworks.sh */,
+				3CAC30946AD5D8169327E87D54A181D4 /* Pods-ChatSample-Info.plist */,
+				EE186CF7DB02CF5395866FCBBF14F4C6 /* Pods-ChatSample-umbrella.h */,
+				75CFA728078C05B239620B29E95E0A49 /* Pods-ChatSample.debug.xcconfig */,
+				5055C01DD96869BD98C662C775EEC70F /* Pods-ChatSample.release.xcconfig */,
+			);
+			name = "Pods-ChatSample";
+			path = "Target Support Files/Pods-ChatSample";
+			sourceTree = "<group>";
+		};
+		80D24C3504546ED0D6B7501714184CD1 /* iOS */ = {
+			isa = PBXGroup;
+			children = (
+				B6DEA8D1DA2DC676ADA162AF5D719AFF /* Foundation.framework */,
+			);
+			name = iOS;
+			sourceTree = "<group>";
+		};
+		93D9DFC81B31E8C233EB84EE5A711661 /* SoundWave */ = {
+			isa = PBXGroup;
+			children = (
+				D70EDCC6255396CF9D0A2AFE22D7E8A2 /* AudioVisualizationView.swift */,
+				70CBDDE2F4983C8D4895BF3B022A0B76 /* AudioVisualizationView.xib */,
+				54C42CC1C0D93FD4BA1589B070B59267 /* BaseNibView.swift */,
+				0DCB1A49CB1A67456B71146D342BFE65 /* Chronometer.swift */,
+				FDC836D05DA77E27AB4C126F03DE7CD7 /* Support Files */,
+			);
+			name = SoundWave;
+			path = SoundWave;
+			sourceTree = "<group>";
+		};
+		A423C24D8C25F81A5DDBC71D767805C5 /* AvailableHapticFeedback */ = {
+			isa = PBXGroup;
+			children = (
+				266B5038464F17D9168F908ABC89DAFC /* AvailableHapticFeedback.swift */,
+				D5BE62D47B775EA819E22C30B4331264 /* Support Files */,
+			);
+			name = AvailableHapticFeedback;
+			path = AvailableHapticFeedback;
+			sourceTree = "<group>";
+		};
+		CF1408CF629C7361332E53B88F7BD30C = {
+			isa = PBXGroup;
+			children = (
+				9D940727FF8FB9C785EB98E56350EF41 /* Podfile */,
+				3C896FD53AD6116C7ACC35B5B0946DB0 /* Frameworks */,
+				359D106E994BCA77A73AEAFE0A36B469 /* Pods */,
+				3A79034340386D2E60867BC68CB92525 /* Products */,
+				D4A924AA8E294F09DD55BD11CA888AB4 /* Targets Support Files */,
+			);
+			sourceTree = "<group>";
+		};
+		D23185E44F7421D57F6AD1BF92A9AA8C /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				837D3A0E9766B31B85D562625D6453FF /* MultiSlider.modulemap */,
+				EB0DF0C749F3ADB46DFC7055DD5560E2 /* MultiSlider.xcconfig */,
+				10975A21FD616EDB35B1885ACE699A45 /* MultiSlider-dummy.m */,
+				ED695CC0BD5265A6EB032F36ACCCB8A1 /* MultiSlider-Info.plist */,
+				A62CC60FE76094BE86FCBCF13461BD51 /* MultiSlider-prefix.pch */,
+				84BFFB7C10FA245724BEA12735C3A468 /* MultiSlider-umbrella.h */,
+			);
+			name = "Support Files";
+			path = "../Target Support Files/MultiSlider";
+			sourceTree = "<group>";
+		};
+		D4A924AA8E294F09DD55BD11CA888AB4 /* Targets Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				52DA2FD0B9C2625B0F66E7289E6AEB7B /* Pods-ChatSample */,
+			);
+			name = "Targets Support Files";
+			sourceTree = "<group>";
+		};
+		D5BE62D47B775EA819E22C30B4331264 /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				3EEDC711CC8CD489BD1103A2B7EBE134 /* AvailableHapticFeedback.modulemap */,
+				091CC3688EB94BFD3C3B935383727693 /* AvailableHapticFeedback.xcconfig */,
+				C8ADCD114283C8CA5D8A0AE4FDCB348C /* AvailableHapticFeedback-dummy.m */,
+				7B08D78734C4F17B552554EB72747F4E /* AvailableHapticFeedback-Info.plist */,
+				CB6618E54DA48B9A789CA4076AB086DC /* AvailableHapticFeedback-prefix.pch */,
+				4582320ABAAD8168DB4B919731CF2CD3 /* AvailableHapticFeedback-umbrella.h */,
+			);
+			name = "Support Files";
+			path = "../Target Support Files/AvailableHapticFeedback";
+			sourceTree = "<group>";
+		};
+		F1F78BF6FB555F8AC6E69B71EE0056D8 /* SweeterSwift */ = {
+			isa = PBXGroup;
+			children = (
+				07403125E50DB7FF30AAB76EB71DE6CB /* Bundle+Sweeter.swift */,
+				FBCCA49F6008B4BF4BEF9EF056137CA2 /* Codable+Sweeter.swift */,
+				51C4A14E3B678EA0D7F5F13ACB18794D /* DateFormatter+Sweeter.swift */,
+				655966E3F29E96B0B38B04CE86C23909 /* NSAttributedString+Sweeter.swift */,
+				F898A0214DC1E9C3AC7257FC88D63C7D /* NSManagedObjectContext+Sweeter.swift */,
+				9C0B313DDF9CE6786A850B0122E9AAB7 /* NSObject+Sweeter.swift */,
+				C52CDB47031A28BEC90F0E2BE495AED3 /* String+Sweeter.swift */,
+				E21E3C5829BAB7F7430F642314E1BFAC /* Swift+Sweeter.swift */,
+				9E916592FA6F9E84144DBD4EFDF9D372 /* TimeInterval+Sweeter.swift */,
+				287F42580807EE5B5C3667BFF21E6BD7 /* UIApplication+Sweeter.swift */,
+				571DD6095BCC10593188B2705A86EAF9 /* UIStackView+Sweeter.swift */,
+				D3572C54C8DED4D05DD989F8BB47CC8C /* UITextView+Sweeter.swift */,
+				9C38621764429994BC1DED7846F3CC98 /* UIView+Sweeter.swift */,
+				DADB2E0D9E56748A2C9844DCD641CCE9 /* UIViewController+Sweeter.swift */,
+				1969E707D6F435EB4FE35BF7B0F05D96 /* Support Files */,
+			);
+			name = SweeterSwift;
+			path = SweeterSwift;
+			sourceTree = "<group>";
+		};
+		FDC836D05DA77E27AB4C126F03DE7CD7 /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				38EDDAFE01DF283B206B4506DC66B552 /* SoundWave.modulemap */,
+				80C0F7CA2739D44C60ECE7C37FA59B31 /* SoundWave.xcconfig */,
+				39A7AD73DC2E020344016C7DADD4D246 /* SoundWave-dummy.m */,
+				3ECE9F6E7A13CE10B5D5370098704DA2 /* SoundWave-Info.plist */,
+				E8B09AFCBB65FDDE42EDE0713DF6822D /* SoundWave-prefix.pch */,
+				55845175D8EFD7917E68C1FBC80A0464 /* SoundWave-umbrella.h */,
+			);
+			name = "Support Files";
+			path = "../Target Support Files/SoundWave";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		1B164B57D7DE47773626831723CC0241 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D208245D3E5494744639E639F23D3DE0 /* Pods-ChatSample-umbrella.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		2E74CF3AE25D2103A49AEA03AD48EAEE /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6065B6A7DD8827C0C12518F0DF6D0CFE /* SweeterSwift-umbrella.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		3CEE35FCAC73030E962D93D55AC77497 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CA6D95D21E2DF2FE16811E5A472434C3 /* SoundWave-umbrella.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		805E1BA29F8122703FF3674B90D7BEE8 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				66F841179D74843A535AAB86E5777F5C /* AvailableHapticFeedback-umbrella.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		DEB4B3BFDC9DD6DFD22BC95230C42C6E /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D6C07782CA75326ABCCB1BE480D37115 /* MultiSlider-umbrella.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
+/* Begin PBXNativeTarget section */
+		11AC72B831B7C916445AC190E5304276 /* Pods-ChatSample */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 5D0264D967BEE6CB9324D82C844DAD2F /* Build configuration list for PBXNativeTarget "Pods-ChatSample" */;
+			buildPhases = (
+				1B164B57D7DE47773626831723CC0241 /* Headers */,
+				2DD934FEC6E01BE5C7EFC1D9CB365232 /* Sources */,
+				2E74A90B4564CF6C7F5CD531BB42C82D /* Frameworks */,
+				3D4AA477FF759F1450D7243918CAE00E /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				030781E3AB38BB4549BAF82CCFC4D1C2 /* PBXTargetDependency */,
+				EC5FD5F5FF2F7019511F41CEA716E1A1 /* PBXTargetDependency */,
+				864FA3D7B236E3FC845805986AD89F05 /* PBXTargetDependency */,
+				5E8DD44134B027689BD89BA1508AE18B /* PBXTargetDependency */,
+			);
+			name = "Pods-ChatSample";
+			productName = "Pods-ChatSample";
+			productReference = C97130705A69FEDF91B2C48B83B787F4 /* Pods_ChatSample.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		3512EBC5B210EF5D4D638A864E7E2A40 /* AvailableHapticFeedback */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = B85EFC3A758CBF520B5962085FEDAFC0 /* Build configuration list for PBXNativeTarget "AvailableHapticFeedback" */;
+			buildPhases = (
+				805E1BA29F8122703FF3674B90D7BEE8 /* Headers */,
+				965FFD72ACD27C799E26B526084C282D /* Sources */,
+				B0D96F397375B310410C8BC633BCA01B /* Frameworks */,
+				9DA81E5ADC0D75582D0078ADE7D06386 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = AvailableHapticFeedback;
+			productName = AvailableHapticFeedback;
+			productReference = D306F3B73B0E0A789613827FE76170DA /* AvailableHapticFeedback.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		6819F499159C87193DDD7D51504DD6C1 /* SweeterSwift */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = B082F694BC605E911954668DFBCA4230 /* Build configuration list for PBXNativeTarget "SweeterSwift" */;
+			buildPhases = (
+				2E74CF3AE25D2103A49AEA03AD48EAEE /* Headers */,
+				DA3C18118CF69F773B0CFDF74B27072C /* Sources */,
+				55DE6C9EE48EDD6EFD9B9CF82BAA7500 /* Frameworks */,
+				709553951A28EED968AD5FE40CAEC23E /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = SweeterSwift;
+			productName = SweeterSwift;
+			productReference = B76CD9F952582A6A4387D799501B3950 /* SweeterSwift.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		F0987D2BA445E423F5BB22D4899D2E22 /* SoundWave */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = E180026729C8761994638CD1367E4B37 /* Build configuration list for PBXNativeTarget "SoundWave" */;
+			buildPhases = (
+				3CEE35FCAC73030E962D93D55AC77497 /* Headers */,
+				45D327A15410E0667B0C7874276336D3 /* Sources */,
+				3898A4678B18213325ED9AAEE1646D6C /* Frameworks */,
+				C441D88F5CB98C122A1947E38B5DDC65 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = SoundWave;
+			productName = SoundWave;
+			productReference = 843FFB1A5DEC64169D3AD840635DA0CC /* SoundWave.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		F69984ED0D5D3CC1B9D170E4AC78A24E /* MultiSlider */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = AD57905F83F887C0BB4D43B5C6023943 /* Build configuration list for PBXNativeTarget "MultiSlider" */;
+			buildPhases = (
+				DEB4B3BFDC9DD6DFD22BC95230C42C6E /* Headers */,
+				7CFB2DD2767597971463432E1E5C8723 /* Sources */,
+				F52ECB46AED2F548087A7DAB0AF4CF37 /* Frameworks */,
+				FF0A84EB50E88377441CB36D0C5F9215 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				9E9840A86E55F87DA1777C6021D39A3D /* PBXTargetDependency */,
+				8C52F4A52CBA8BC714ACB1D58D12BA80 /* PBXTargetDependency */,
+			);
+			name = MultiSlider;
+			productName = MultiSlider;
+			productReference = FB710FE125F9F03098F08A750214F3A2 /* MultiSlider.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		BFDFE7DC352907FC980B868725387E98 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 1100;
+				LastUpgradeCheck = 1100;
+			};
+			buildConfigurationList = 4821239608C13582E20E6DA73FD5F1F9 /* Build configuration list for PBXProject "Pods" */;
+			compatibilityVersion = "Xcode 10.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = CF1408CF629C7361332E53B88F7BD30C;
+			productRefGroup = 3A79034340386D2E60867BC68CB92525 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				3512EBC5B210EF5D4D638A864E7E2A40 /* AvailableHapticFeedback */,
+				F69984ED0D5D3CC1B9D170E4AC78A24E /* MultiSlider */,
+				11AC72B831B7C916445AC190E5304276 /* Pods-ChatSample */,
+				F0987D2BA445E423F5BB22D4899D2E22 /* SoundWave */,
+				6819F499159C87193DDD7D51504DD6C1 /* SweeterSwift */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		3D4AA477FF759F1450D7243918CAE00E /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		709553951A28EED968AD5FE40CAEC23E /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		9DA81E5ADC0D75582D0078ADE7D06386 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C441D88F5CB98C122A1947E38B5DDC65 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		FF0A84EB50E88377441CB36D0C5F9215 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		2DD934FEC6E01BE5C7EFC1D9CB365232 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				157083BA8F7899086152E79368950E91 /* Pods-ChatSample-dummy.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		45D327A15410E0667B0C7874276336D3 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				25932891993D663085D9E559A87B2B9F /* AudioVisualizationView.swift in Sources */,
+				74477FD04FF4A0C89FE017BB57F83093 /* AudioVisualizationView.xib in Sources */,
+				E48C7231C212D83CE25A2990D0318C88 /* BaseNibView.swift in Sources */,
+				44EFF6FB94B5404CE0B3311CE62C8449 /* Chronometer.swift in Sources */,
+				378FB83D16D1775A687B3E3F10C6EEA4 /* SoundWave-dummy.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		7CFB2DD2767597971463432E1E5C8723 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				36D75CB53A4B99F1F5E32F68DAC33661 /* MultiSlider+Drag.swift in Sources */,
+				75EEAD1A654E8D0FDE8AA1B3692D519E /* MultiSlider+Internal.swift in Sources */,
+				3346DBAD90FF44438585AAEB1F45E65A /* MultiSlider-dummy.m in Sources */,
+				B3728C258C79E9AE55E1F19D6515A154 /* MultiSlider.swift in Sources */,
+				0FAF10B953348E4809D9C0E0D90373AC /* MultiSliderExtensions.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		965FFD72ACD27C799E26B526084C282D /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DE6872BD48CC82DE270DD8B721AD91B5 /* AvailableHapticFeedback-dummy.m in Sources */,
+				1C70499DBB19E6F16AA731D3EEFEF379 /* AvailableHapticFeedback.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		DA3C18118CF69F773B0CFDF74B27072C /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				729444C129930B0D6D866F472B9135A2 /* Bundle+Sweeter.swift in Sources */,
+				7773D89CDF2497CD790455F96E9CBD6F /* Codable+Sweeter.swift in Sources */,
+				CADD243602F8B795242D2C7CC9625FAF /* DateFormatter+Sweeter.swift in Sources */,
+				426D653DE601DC368465AAAB635BAA76 /* NSAttributedString+Sweeter.swift in Sources */,
+				D04291D05B105796BD79C03AF28184AA /* NSManagedObjectContext+Sweeter.swift in Sources */,
+				8390D125170BF642F18ABA21E6AF3600 /* NSObject+Sweeter.swift in Sources */,
+				3A89DB35B5BC3B209426A1D62F9CB0B1 /* String+Sweeter.swift in Sources */,
+				1F0BF72601371B45C31EB0357E374AEB /* SweeterSwift-dummy.m in Sources */,
+				04B7F7C9E32EBF66CD80D843B44DA222 /* Swift+Sweeter.swift in Sources */,
+				443CF6A26998A642A34DB1B97B8E465D /* TimeInterval+Sweeter.swift in Sources */,
+				60E8AE64ABD5300742412EFEF2B57006 /* UIApplication+Sweeter.swift in Sources */,
+				65A022FAE15175566197A94A7A3BD8F0 /* UIStackView+Sweeter.swift in Sources */,
+				84EB4E634F9BB3D8E51F4E0ED1D3EA7F /* UITextView+Sweeter.swift in Sources */,
+				4CB9FD431FB20AE7D8D3EFF7CAB104E2 /* UIView+Sweeter.swift in Sources */,
+				CBB8113C245DD01F102A60CB516D4211 /* UIViewController+Sweeter.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		030781E3AB38BB4549BAF82CCFC4D1C2 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = AvailableHapticFeedback;
+			target = 3512EBC5B210EF5D4D638A864E7E2A40 /* AvailableHapticFeedback */;
+			targetProxy = 52DD01801435F34AA6DF21D3F7D3192E /* PBXContainerItemProxy */;
+		};
+		5E8DD44134B027689BD89BA1508AE18B /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = SweeterSwift;
+			target = 6819F499159C87193DDD7D51504DD6C1 /* SweeterSwift */;
+			targetProxy = 9259EA500593752D7FAA0D83FC3FF680 /* PBXContainerItemProxy */;
+		};
+		864FA3D7B236E3FC845805986AD89F05 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = SoundWave;
+			target = F0987D2BA445E423F5BB22D4899D2E22 /* SoundWave */;
+			targetProxy = 85EE0F52DDE5C0B6BF692A73A461BBDB /* PBXContainerItemProxy */;
+		};
+		8C52F4A52CBA8BC714ACB1D58D12BA80 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = SweeterSwift;
+			target = 6819F499159C87193DDD7D51504DD6C1 /* SweeterSwift */;
+			targetProxy = 4E9C89FC6414A7887407F00898818D57 /* PBXContainerItemProxy */;
+		};
+		9E9840A86E55F87DA1777C6021D39A3D /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = AvailableHapticFeedback;
+			target = 3512EBC5B210EF5D4D638A864E7E2A40 /* AvailableHapticFeedback */;
+			targetProxy = 5B24EB9FC7EE218DF6CE5E4D35841636 /* PBXContainerItemProxy */;
+		};
+		EC5FD5F5FF2F7019511F41CEA716E1A1 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = MultiSlider;
+			target = F69984ED0D5D3CC1B9D170E4AC78A24E /* MultiSlider */;
+			targetProxy = 7A55B22DD8769D442D331D87D89A0AFB /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		00DC93CD566A2F8ECFF022E522A7BB74 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = BC109B47099368190583274D77CA32EC /* SweeterSwift.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GCC_PREFIX_HEADER = "Target Support Files/SweeterSwift/SweeterSwift-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/SweeterSwift/SweeterSwift-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MODULEMAP_FILE = "Target Support Files/SweeterSwift/SweeterSwift.modulemap";
+				PRODUCT_MODULE_NAME = SweeterSwift;
+				PRODUCT_NAME = SweeterSwift;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		1A48592CC1F1A1668636BEFA7F0F1C85 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 091CC3688EB94BFD3C3B935383727693 /* AvailableHapticFeedback.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GCC_PREFIX_HEADER = "Target Support Files/AvailableHapticFeedback/AvailableHapticFeedback-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/AvailableHapticFeedback/AvailableHapticFeedback-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MODULEMAP_FILE = "Target Support Files/AvailableHapticFeedback/AvailableHapticFeedback.modulemap";
+				PRODUCT_MODULE_NAME = AvailableHapticFeedback;
+				PRODUCT_NAME = AvailableHapticFeedback;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		1DE530FD0D8D03FFAEB6DB255FB255E0 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 091CC3688EB94BFD3C3B935383727693 /* AvailableHapticFeedback.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GCC_PREFIX_HEADER = "Target Support Files/AvailableHapticFeedback/AvailableHapticFeedback-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/AvailableHapticFeedback/AvailableHapticFeedback-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MODULEMAP_FILE = "Target Support Files/AvailableHapticFeedback/AvailableHapticFeedback.modulemap";
+				PRODUCT_MODULE_NAME = AvailableHapticFeedback;
+				PRODUCT_NAME = AvailableHapticFeedback;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		939F1A8F6BCEB7F9F64D9EEE50CAE014 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"POD_CONFIGURATION_DEBUG=1",
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				STRIP_INSTALLED_PRODUCT = NO;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+				SYMROOT = "${SRCROOT}/../build";
+			};
+			name = Debug;
+		};
+		A11B966AA68C67591F61DDA21EF5163C /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 80C0F7CA2739D44C60ECE7C37FA59B31 /* SoundWave.xcconfig */;
+			buildSettings = {
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GCC_PREFIX_HEADER = "Target Support Files/SoundWave/SoundWave-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/SoundWave/SoundWave-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MODULEMAP_FILE = "Target Support Files/SoundWave/SoundWave.modulemap";
+				PRODUCT_MODULE_NAME = SoundWave;
+				PRODUCT_NAME = SoundWave;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		CC7DBF504308D0DCBD2D0E3151CF54C9 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 75CFA728078C05B239620B29E95E0A49 /* Pods-ChatSample.debug.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "Target Support Files/Pods-ChatSample/Pods-ChatSample-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-ChatSample/Pods-ChatSample.modulemap";
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		CF2DAE5EB39C2581D303DCD99E4F2E9E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = EB0DF0C749F3ADB46DFC7055DD5560E2 /* MultiSlider.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GCC_PREFIX_HEADER = "Target Support Files/MultiSlider/MultiSlider-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/MultiSlider/MultiSlider-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				MODULEMAP_FILE = "Target Support Files/MultiSlider/MultiSlider.modulemap";
+				PRODUCT_MODULE_NAME = MultiSlider;
+				PRODUCT_NAME = MultiSlider;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		D6AE1403A93892972A1BCDF565613C42 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = EB0DF0C749F3ADB46DFC7055DD5560E2 /* MultiSlider.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GCC_PREFIX_HEADER = "Target Support Files/MultiSlider/MultiSlider-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/MultiSlider/MultiSlider-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				MODULEMAP_FILE = "Target Support Files/MultiSlider/MultiSlider.modulemap";
+				PRODUCT_MODULE_NAME = MultiSlider;
+				PRODUCT_NAME = MultiSlider;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		D8EE7895958CA58E04A363CFFB55F552 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = BC109B47099368190583274D77CA32EC /* SweeterSwift.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GCC_PREFIX_HEADER = "Target Support Files/SweeterSwift/SweeterSwift-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/SweeterSwift/SweeterSwift-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MODULEMAP_FILE = "Target Support Files/SweeterSwift/SweeterSwift.modulemap";
+				PRODUCT_MODULE_NAME = SweeterSwift;
+				PRODUCT_NAME = SweeterSwift;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		DE59103ECDC4A3A43E4F1C5A14FD3264 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 80C0F7CA2739D44C60ECE7C37FA59B31 /* SoundWave.xcconfig */;
+			buildSettings = {
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GCC_PREFIX_HEADER = "Target Support Files/SoundWave/SoundWave-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/SoundWave/SoundWave-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MODULEMAP_FILE = "Target Support Files/SoundWave/SoundWave.modulemap";
+				PRODUCT_MODULE_NAME = SoundWave;
+				PRODUCT_NAME = SoundWave;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		E03E0D4126A97F91B7F47719C8F1FCC1 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 5055C01DD96869BD98C662C775EEC70F /* Pods-ChatSample.release.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "Target Support Files/Pods-ChatSample/Pods-ChatSample-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-ChatSample/Pods-ChatSample.modulemap";
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		ECB437504DF805BD96CAABF97400B526 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"POD_CONFIGURATION_RELEASE=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				STRIP_INSTALLED_PRODUCT = NO;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_VERSION = 5.0;
+				SYMROOT = "${SRCROOT}/../build";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		4821239608C13582E20E6DA73FD5F1F9 /* Build configuration list for PBXProject "Pods" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				939F1A8F6BCEB7F9F64D9EEE50CAE014 /* Debug */,
+				ECB437504DF805BD96CAABF97400B526 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		5D0264D967BEE6CB9324D82C844DAD2F /* Build configuration list for PBXNativeTarget "Pods-ChatSample" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				CC7DBF504308D0DCBD2D0E3151CF54C9 /* Debug */,
+				E03E0D4126A97F91B7F47719C8F1FCC1 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		AD57905F83F887C0BB4D43B5C6023943 /* Build configuration list for PBXNativeTarget "MultiSlider" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				CF2DAE5EB39C2581D303DCD99E4F2E9E /* Debug */,
+				D6AE1403A93892972A1BCDF565613C42 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		B082F694BC605E911954668DFBCA4230 /* Build configuration list for PBXNativeTarget "SweeterSwift" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				00DC93CD566A2F8ECFF022E522A7BB74 /* Debug */,
+				D8EE7895958CA58E04A363CFFB55F552 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		B85EFC3A758CBF520B5962085FEDAFC0 /* Build configuration list for PBXNativeTarget "AvailableHapticFeedback" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1DE530FD0D8D03FFAEB6DB255FB255E0 /* Debug */,
+				1A48592CC1F1A1668636BEFA7F0F1C85 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		E180026729C8761994638CD1367E4B37 /* Build configuration list for PBXNativeTarget "SoundWave" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				DE59103ECDC4A3A43E4F1C5A14FD3264 /* Debug */,
+				A11B966AA68C67591F61DDA21EF5163C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = BFDFE7DC352907FC980B868725387E98 /* Project object */;
+}
