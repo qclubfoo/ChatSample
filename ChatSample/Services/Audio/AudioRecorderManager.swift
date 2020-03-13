@@ -32,6 +32,10 @@ final class AudioRecorderManager: NSObject {
     private var recorder: AVAudioRecorder?
     private var audioMeteringLevelTimer: Timer?
 
+    private override init() {
+        super.init()
+    }
+    
     func askPermission(completion: ((Bool) -> Void)? = nil) {
         AVAudioSession.sharedInstance().requestRecordPermission { [weak self] granted in
             self?.isPermissionGranted = granted
@@ -126,6 +130,105 @@ final class AudioRecorderManager: NSObject {
         self.currentRecordPath = nil
         
         print("Audio Recorder did remove current record successfully")
+    }
+    
+    func concatenate(firstAudioUrl: URL, secondAudioUrl: URL) throws {
+        if self.isRunning {
+            print("Audio Recorder tried to concatenate recording before stopping it")
+            throw AudioErrorType.alreadyRecording
+        }
+        
+        let mutableComposition = AVMutableComposition()
+        let audioFilesUrls: [URL] = [firstAudioUrl, secondAudioUrl]
+        for i in 0 ..< audioFilesUrls.count {
+            let compositionAudioTrack :AVMutableCompositionTrack = mutableComposition.addMutableTrack(withMediaType: AVMediaType.audio,
+                                                                                                      preferredTrackID: CMPersistentTrackID()
+                )!
+            let asset = AVURLAsset(url: audioFilesUrls[i])
+            let track = asset.tracks(withMediaType: AVMediaType.audio).first
+            let timeRange = CMTimeRange(start: CMTimeMake(value: 0,
+                                                          timescale: 600),
+                                        duration: (track?.timeRange.duration)!)
+            try! compositionAudioTrack.insertTimeRange(timeRange,
+                                                       of: track!,
+                                                       at: mutableComposition.duration)
+        }
+        
+        guard let mergeUrl = URL.documentsPath(forFileName: self.audioFileNamePrefix + ".merge." + NSUUID().uuidString) else {
+            print("Incorrect path for new audio file")
+            throw AudioErrorType.audioFileWrongPath
+        }
+        
+        var throwError: AudioErrorType?
+        let assetExport = AVAssetExportSession(asset: mutableComposition, presetName: AVAssetExportPresetAppleM4A)
+        assetExport?.outputURL = mergeUrl
+        assetExport?.exportAsynchronously(completionHandler:
+            {
+                switch assetExport!.status
+                {
+                case .failed:
+                    print("Asset export manager tried to concatinate audio files. Status: Failed")
+                    throwError = .assetExportFailed
+                    break
+                case .cancelled:
+                    print("Asset export manager tried to concatinate audio files. Status: Cancelled")
+                    throwError = .assetExportCancelled
+                    break
+                case .unknown:
+                    print("Asset export manager tried to concatinate audio files. Status: Unknown")
+                    throwError = .assetExportUnknown
+                    break
+                case .waiting:
+                    print("Asset export manager tried to concatinate audio files. Status: Waiting")
+                    throwError = .assetExportWaiting
+                    break
+                case .exporting:
+                    print("Asset export manager tried to concatinate audio files. Status: Exporting")
+                    throwError = .assetExportExporting
+                    break
+                default:
+                    DispatchQueue.main.async {
+                        if self.isFileAvaliable(url: firstAudioUrl) {
+                            do {
+                                try FileManager.default.removeItem(at: firstAudioUrl)
+                            } catch {
+                                throwError = AudioErrorType.fileNotAvailiable
+                            }
+                            if self.isFileAvaliable(url: secondAudioUrl) {
+                                do {
+                                    try FileManager.default.removeItem(at: secondAudioUrl)
+                                } catch {
+                                    throwError = AudioErrorType.fileNotAvailiable
+                                }
+                            }
+                        }
+                        if throwError == nil {
+                            do {
+                                try FileManager.default.moveItem(at: mergeUrl, to: firstAudioUrl)
+                            } catch {
+                                throwError = .assetExportFailed
+                            }
+                        }
+                    }
+                    print("Audio Concatenation Complete")
+                }
+        })
+        
+        if throwError != nil {
+            throw throwError!
+        }
+        
+    }
+    
+    private func isFileAvaliable(url: URL) -> Bool {
+        do {
+            if try url.checkResourceIsReachable() {
+                return true
+            }
+        } catch {
+            print(error.localizedDescription)
+        }
+        return false
     }
 
     @objc func timerDidUpdateMeter() {

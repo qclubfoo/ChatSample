@@ -10,6 +10,7 @@ import Foundation
 import AVFoundation
 
 final class AudioPlayerManager: NSObject {
+    
     static let shared = AudioPlayerManager()
 
     var isRunning: Bool {
@@ -22,6 +23,10 @@ final class AudioPlayerManager: NSObject {
     private var audioPlayer: AVAudioPlayer?
     private var audioMeteringLevelTimer: Timer?
 
+    private override init() {
+        super.init()
+    }
+    
     // MARK: - Reinit and play from the beginning
 
     func play(at url: URL, with audioVisualizationTimeInterval: TimeInterval = 0.05) throws -> TimeInterval {

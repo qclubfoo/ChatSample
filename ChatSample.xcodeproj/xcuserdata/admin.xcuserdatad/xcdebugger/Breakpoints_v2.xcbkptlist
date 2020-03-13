@@ -78,8 +78,8 @@
             filePath = "ChatSample/TableViewControllerWithLabels.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "121"
-            endingLineNumber = "121"
+            startingLineNumber = "157"
+            endingLineNumber = "157"
             landmarkName = "longPressButton(_:)"
             landmarkType = "7">
          </BreakpointContent>

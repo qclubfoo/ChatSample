@@ -9,6 +9,8 @@
 import Foundation
 
 enum AudioErrorType: Error {
+    case fileNotAvailiable
+    
     case alreadyRecording
     case alreadyPlaying
     case notCurrentlyPlaying
@@ -17,6 +19,12 @@ enum AudioErrorType: Error {
     case playFailed
     case recordPermissionNotGranted
     case internalError
+    
+    case assetExportFailed
+    case assetExportCancelled
+    case assetExportUnknown
+    case assetExportWaiting
+    case assetExportExporting
 }
 
 extension AudioErrorType: LocalizedError {
@@ -38,6 +46,18 @@ extension AudioErrorType: LocalizedError {
             return "Unable to record sound because the permission has not been granted. This can be changed in your settings."
         case .internalError:
             return "An error occured while trying to process audio command, please try again"
+        case .assetExportFailed:
+            return "Asset export manager tried to concatinate audio files. Status: Failed"
+        case .assetExportCancelled:
+            return "Asset export manager tried to concatinate audio files. Status: Cancelled"
+        case .assetExportUnknown:
+            return "Asset export manager tried to concatinate audio files. Status: Unknown"
+        case .assetExportWaiting:
+            return "Asset export manager tried to concatinate audio files. Status: Waiting"
+        case .assetExportExporting:
+            return "Asset export manager tried to concatinate audio files. Status: Exporting"
+        case .fileNotAvailiable:
+            return "Audio at URL is not availiable"
         }
     }
 }

@@ -14,8 +14,8 @@
             filePath = "ChatSample/TableViewControllerWithLabels.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "173"
-            endingLineNumber = "173"
+            startingLineNumber = "220"
+            endingLineNumber = "220"
             landmarkName = "addCropView()"
             landmarkType = "7">
          </BreakpointContent>

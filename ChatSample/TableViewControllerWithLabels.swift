@@ -15,6 +15,27 @@ protocol MessageType {
     var text: String { get }
 }
 
+private enum AudioRecodingState {
+    
+    case ready
+    case recording
+    case recorded
+    case playing
+    case paused
+
+    var buttonImage: UIImage {
+        switch self {
+        case .ready:
+            return UIImage(systemName: "mic.circle")!
+        case .recording:
+            return UIImage(systemName: "mic.circle.fill")!
+        case .recorded, .paused:
+            return UIImage(systemName: "play.circle")!
+        case .playing:
+            return UIImage(systemName: "pause.circle")!
+        }
+    }
+}
 
 public enum MessageKind {
     case text
@@ -86,7 +107,22 @@ class TableViewControllerWithLabels: UIViewController {
     @IBOutlet var longPressOutlet: UILongPressGestureRecognizer!
     @IBOutlet weak var bottomContainerView: UIView!
     
-
+    let editSendButton = UIButton()
+    let editCropButton = UIButton()
+    let editRecButton = UIButton()
+    let editPlayButton = UIButton()
+    let editTrashButton = UIButton()
+    let editSlider = UISlider()
+    
+    private var currentState: AudioRecodingState = .ready {
+        didSet {
+            self.editRecButton.setBackgroundImage(self.currentState.buttonImage, for: .normal)
+            self.editCropButton.isEnabled = !(self.currentState == .recording)  // || еще возможное условие
+            self.editPlayButton.isEnabled = !(self.currentState == .recording)  // || еще возможное условие
+            self.editTrashButton.isEnabled = !(self.currentState == .recording) // || еще возможное условие
+            self.editSlider.isEnabled = !(self.currentState == .recording)      // || еще возможное условие
+        }
+    }
     
     
     @IBAction func sendMessageButton(_ sender: UIButton) {
@@ -133,75 +169,86 @@ class TableViewControllerWithLabels: UIViewController {
         
         view.bringSubviewToFront(cropView)
         
-        let sendButton = UIButton()
-        let cropButton = UIButton()
-        let recButton = UIButton()
-        let playButton = UIButton()
-        let trashButton = UIButton()
-        let slider = UISlider()
+        editSendButton.setBackgroundImage(UIImage(systemName: "arrow.up.circle"), for: .normal)
+        editCropButton.setBackgroundImage(UIImage(systemName: "scissors"), for: .normal)
+        editRecButton.setBackgroundImage(UIImage(systemName: "mic.circle"), for: .normal)
+        editRecButton.tintColor = .red
+        editPlayButton.setBackgroundImage(UIImage(systemName: "play.circle"), for: .normal)
+        editTrashButton.setBackgroundImage(UIImage(systemName: "trash.fill"), for: .normal)
+        editSlider.setThumbImage(UIImage(systemName: "mappin"), for: .normal)
+        editSlider.minimumValue = 0
+        let urlPath = messageArray[messageArray.count - 1].text
+        let url = URL(string: urlPath)
+        var player: AVAudioPlayer?
         
-        sendButton.setBackgroundImage(UIImage(systemName: "arrow.up.circle"), for: .normal)
-        cropButton.setBackgroundImage(UIImage(systemName: "scissors"), for: .normal)
-        recButton.setBackgroundImage(UIImage(systemName: "mic.circle"), for: .normal)
-        playButton.setBackgroundImage(UIImage(systemName: "play.circle"), for: .normal)
-        trashButton.setBackgroundImage(UIImage(systemName: "trash.fill"), for: .normal)
-        slider.setThumbImage(UIImage(systemName: "mappin"), for: .normal)
+        do {
+            player = try AVAudioPlayer(contentsOf: url!)
+        } catch {
+            print(error.localizedDescription)
+        }
         
-        trashButton.addTarget(self, action: #selector(deleteRecAndCancelSending), for: .touchUpInside)
+        if player != nil {
+            editSlider.maximumValue = Float(player!.duration)
+        }
+        
+        editSlider.setValue(editSlider.maximumValue, animated: true)
+        
+        
+        editTrashButton.addTarget(self, action: #selector(deleteRecAndCancelSending), for: .touchUpInside)
         sendButton.addTarget(self, action: #selector(sendVoiceMessageFromCropView), for: .touchUpInside)
-        playButton.addTarget(self, action: #selector(playLastVoiceMessage), for: .touchUpInside)
+        editPlayButton.addTarget(self, action: #selector(playLastVoiceMessage), for: .touchUpInside)
+        editRecButton.addTarget(self, action: #selector(recButtonDown(sender:)), for: .touchDown)
+        editRecButton.addTarget(self, action: #selector(recButtonTapped(sender:)), for: .touchUpInside)
+    
         
-        
-
-        
-        let buttons = [sendButton, cropButton, playButton, trashButton, recButton]
+        let buttons = [editSendButton, editCropButton, editPlayButton, editTrashButton, editRecButton]
         for button in buttons {
             cropView.addSubview(button)
             button.translatesAutoresizingMaskIntoConstraints = false
         }
-        cropView.addSubview(slider)
-        slider.translatesAutoresizingMaskIntoConstraints = false
+        cropView.addSubview(editSlider)
+        editSlider.translatesAutoresizingMaskIntoConstraints = false
         
         NSLayoutConstraint.activate([
-            NSLayoutConstraint.init(item: slider, attribute: .top, relatedBy: .equal, toItem: cropView, attribute: .topMargin, multiplier: 1, constant: 0),
-            NSLayoutConstraint.init(item: slider, attribute: .leading, relatedBy: .equal, toItem: cropView, attribute: .leading, multiplier: 1, constant: 10.0),
-            NSLayoutConstraint.init(item: slider, attribute: .trailing, relatedBy: .equal, toItem: cropView, attribute: .trailing, multiplier: 1, constant: 10.0),
-            NSLayoutConstraint.init(item: slider, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1, constant: 20)
+            NSLayoutConstraint.init(item: editSlider, attribute: .top, relatedBy: .equal, toItem: cropView, attribute: .topMargin, multiplier: 1, constant: 0),
+            NSLayoutConstraint.init(item: editSlider, attribute: .leading, relatedBy: .equal, toItem: cropView, attribute: .leading, multiplier: 1, constant: 10.0),
+            NSLayoutConstraint.init(item: editSlider, attribute: .trailing, relatedBy: .equal, toItem: cropView, attribute: .trailing, multiplier: 1, constant: -10.0),
+            NSLayoutConstraint.init(item: editSlider, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1, constant: 20)
         ])
         
         NSLayoutConstraint.activate([
-        NSLayoutConstraint.init(item: sendButton, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1, constant: 35),
-        NSLayoutConstraint.init(item: sendButton, attribute: .width, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1, constant: 35),
-        NSLayoutConstraint.init(item: sendButton, attribute: .trailing, relatedBy: .equal, toItem: cropView, attribute: .trailing, multiplier: 1, constant: -20),
-        NSLayoutConstraint.init(item: sendButton, attribute: .centerY, relatedBy: .equal, toItem: cropView, attribute: .centerY, multiplier: 1, constant: 15)
+        NSLayoutConstraint.init(item: editSendButton, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1, constant: 35),
+        NSLayoutConstraint.init(item: editSendButton, attribute: .width, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1, constant: 35),
+        NSLayoutConstraint.init(item: editSendButton, attribute: .trailing, relatedBy: .equal, toItem: cropView, attribute: .trailing, multiplier: 1, constant: -20),
+        NSLayoutConstraint.init(item: editSendButton, attribute: .centerY, relatedBy: .equal, toItem: cropView, attribute: .centerY, multiplier: 1, constant: 15)
         ])
         
         NSLayoutConstraint.activate([
-            NSLayoutConstraint.init(item: cropButton, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1, constant: 35),
-            NSLayoutConstraint.init(item: cropButton, attribute: .width, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1, constant: 35),
-            NSLayoutConstraint.init(item: cropButton, attribute: .centerY, relatedBy: .equal, toItem: sendButton, attribute: .centerY, multiplier: 1, constant: 0),
-            NSLayoutConstraint.init(item: cropButton, attribute: .trailing, relatedBy: .equal, toItem: sendButton, attribute: .leading, multiplier: 1, constant: -20)
+            NSLayoutConstraint.init(item: editCropButton, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1, constant: 35),
+            NSLayoutConstraint.init(item: editCropButton, attribute: .width, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1, constant: 35),
+            NSLayoutConstraint.init(item: editCropButton, attribute: .centerY, relatedBy: .equal, toItem: editSendButton, attribute: .centerY, multiplier: 1, constant: 0),
+            NSLayoutConstraint.init(item: editCropButton, attribute: .trailing, relatedBy: .equal, toItem: editSendButton, attribute: .leading, multiplier: 1, constant: -20)
         ])
         
         NSLayoutConstraint.activate([
-            NSLayoutConstraint.init(item: recButton, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1, constant: 35),
-            NSLayoutConstraint.init(item: recButton, attribute: .width, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1, constant: 35),
-            NSLayoutConstraint.init(item: recButton, attribute: .centerY, relatedBy: .equal, toItem: cropButton, attribute: .centerY, multiplier: 1, constant: 0),
-            NSLayoutConstraint.init(item: recButton, attribute: .trailing, relatedBy: .equal, toItem: cropButton, attribute: .leading, multiplier: 1, constant: -20)
+            NSLayoutConstraint.init(item: editRecButton, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1, constant: 35),
+            NSLayoutConstraint.init(item: editRecButton, attribute: .width, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1, constant: 35),
+            NSLayoutConstraint.init(item: editRecButton, attribute: .centerY, relatedBy: .equal, toItem: editCropButton, attribute: .centerY, multiplier: 1, constant: 0),
+            NSLayoutConstraint.init(item: editRecButton, attribute: .trailing, relatedBy: .equal, toItem: editCropButton, attribute: .leading, multiplier: 1, constant: -20)
         ])
         
         NSLayoutConstraint.activate([
-            NSLayoutConstraint.init(item: playButton, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1, constant: 35),
-            NSLayoutConstraint.init(item: playButton, attribute: .width, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1, constant: 35),
-            NSLayoutConstraint.init(item: playButton, attribute: .centerY, relatedBy: .equal, toItem: recButton, attribute: .centerY, multiplier: 1, constant: 0),
-            NSLayoutConstraint.init(item: playButton, attribute: .trailing, relatedBy: .equal, toItem: recButton, attribute: .leading, multiplier: 1, constant: -20)
+            NSLayoutConstraint.init(item: editPlayButton, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1, constant: 35),
+            NSLayoutConstraint.init(item: editPlayButton, attribute: .width, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1, constant: 35),
+            NSLayoutConstraint.init(item: editPlayButton, attribute: .centerY, relatedBy: .equal, toItem: editRecButton, attribute: .centerY, multiplier: 1, constant: 0),
+            NSLayoutConstraint.init(item: editPlayButton, attribute: .trailing, relatedBy: .equal, toItem: editRecButton, attribute: .leading, multiplier: 1, constant: -20)
         ])
         
         NSLayoutConstraint.activate([
-            NSLayoutConstraint.init(item: trashButton, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1, constant: 35),
-            NSLayoutConstraint.init(item: trashButton, attribute: .width, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1, constant: 35),
-            NSLayoutConstraint.init(item: trashButton, attribute: .centerY, relatedBy: .equal, toItem: playButton, attribute: .centerY, multiplier: 1, constant: 0),
-            NSLayoutConstraint.init(item: trashButton, attribute: .trailing, relatedBy: .equal, toItem: playButton, attribute: .leading, multiplier: 1, constant: -20)
+            NSLayoutConstraint.init(item: editTrashButton, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1, constant: 35),
+            NSLayoutConstraint.init(item: editTrashButton, attribute: .width, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1, constant: 35),
+            NSLayoutConstraint.init(item: editTrashButton, attribute: .centerY, relatedBy: .equal, toItem: editPlayButton, attribute: .centerY, multiplier: 1, constant: 0),
+            NSLayoutConstraint.init(item: editTrashButton, attribute: .trailing, relatedBy: .equal, toItem: editPlayButton, attribute: .leading, multiplier: 1, constant: -20)
         ])
         
         UIView.animate(withDuration: 0.25, animations: {
@@ -232,6 +279,16 @@ class TableViewControllerWithLabels: UIViewController {
         })
     }
     
+    @objc func recButtonTapped(sender: UIButton) {
+        sender.setBackgroundImage(UIImage(systemName: "mic.circle"), for: .normal)
+        
+    }
+    
+    @objc func recButtonDown(sender: UIButton) {
+        sender.setBackgroundImage(UIImage(systemName: "mic.circle.fill"), for: .normal)
+//        AudioRecorderManager.
+        
+    }
     
     @objc func deleteRecAndCancelSending() {
         messageArray.remove(at: messageArray.count - 1)

@@ -13,7 +13,7 @@ protocol AudioVisualizationProtocol {
     
 }
 
-enum AudioRecodingState {
+private enum AudioRecodingState {
     
     case ready
     case recording
