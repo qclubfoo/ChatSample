@@ -50,10 +50,26 @@ class TableViewControllerWithLabels: UIViewController {
     var editViewController = EditViewController()
     
     var messageArray: [MessageType] = [
-//    TextMessage(text: "Hi"),
-//    TextMessage(text: "Hi!"),
-//    TextMessage(text: "How are you?"),
-//    TextMessage(text: "I'am fine, thanks! What about you?"),
+    TextMessage(text: "Hi"),
+    TextMessage(text: "Hi!"),
+    TextMessage(text: "How are you?"),
+    TextMessage(text: "I'am fine, thanks! What about you?"),
+    TextMessage(text: "Hi"),
+    TextMessage(text: "Hi!"),
+    TextMessage(text: "How are you?"),
+    TextMessage(text: "I'am fine, thanks! What about you?"),
+    TextMessage(text: "Hi"),
+    TextMessage(text: "Hi!"),
+    TextMessage(text: "How are you?"),
+    TextMessage(text: "I'am fine, thanks! What about you?"),
+    TextMessage(text: "Hi"),
+    TextMessage(text: "Hi!"),
+    TextMessage(text: "How are you?"),
+    TextMessage(text: "I'am fine, thanks! What about you?"),
+    TextMessage(text: "Hi"),
+    TextMessage(text: "Hi!"),
+    TextMessage(text: "How are you?"),
+    TextMessage(text: "I'am fine, thanks! What about you?")
     ]
     var voiceRecordNumber = 1
     var activePlayingButton: CustomPlayButton?
@@ -62,10 +78,13 @@ class TableViewControllerWithLabels: UIViewController {
     var audioRecorder: AVAudioRecorder?
     var player: AVAudioPlayer?
     
+    var cropView: UIView!
+    
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var messageTextField: UITextField!
     @IBOutlet weak var sendButton: UIButton!
     @IBOutlet var longPressOutlet: UILongPressGestureRecognizer!
+    @IBOutlet weak var bottomContainerView: UIView!
     
 
     
@@ -90,22 +109,144 @@ class TableViewControllerWithLabels: UIViewController {
             if longPressOutlet.state == .began {
                 if audioRecorder == nil {
                     startRecorder(recordUrl: url)
-//                    UIView.animate(withDuration: 0.7, delay: 0, options: .curveEaseInOut, animations: {
-//                        let frame = self.messageOutlet.frame
-//                        self.messageOutlet.frame = CGRect(x: frame.minX, y: frame.minY, width: frame.width - 100, height: frame.height)
-//                    })
-                    
-//                    messageOutlet.leadingAnchor.constraint(equalTo: sendButton.leadingAnchor, constant: 10).isActive = true
-//                    messageOutlet.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
                 }
             } else if longPressOutlet.state == .ended {
                 if audioRecorder != nil {
                     finishRecording(success: true)
                     messageArray.append(AudioMessage(url: url))
                     voiceRecordNumber += 1
-                    sendVoiceMessage()
+                    addCropView()
                 }
             }
+        }
+    }
+    
+    private func addCropView() {
+        guard let window = view.window else { return }
+        cropView = UIView(frame: CGRect(
+            x: window.frame.minX,
+            y: window.frame.maxY,
+            width: bottomContainerView.frame.width,
+            height: bottomContainerView.frame.height + 10.0))
+        cropView.backgroundColor = .white
+        view.addSubview(cropView)
+        
+        view.bringSubviewToFront(cropView)
+        
+        let sendButton = UIButton()
+        let cropButton = UIButton()
+        let recButton = UIButton()
+        let playButton = UIButton()
+        let trashButton = UIButton()
+        let slider = UISlider()
+        
+        sendButton.setBackgroundImage(UIImage(systemName: "arrow.up.circle"), for: .normal)
+        cropButton.setBackgroundImage(UIImage(systemName: "scissors"), for: .normal)
+        recButton.setBackgroundImage(UIImage(systemName: "mic.circle"), for: .normal)
+        playButton.setBackgroundImage(UIImage(systemName: "play.circle"), for: .normal)
+        trashButton.setBackgroundImage(UIImage(systemName: "trash.fill"), for: .normal)
+        slider.setThumbImage(UIImage(systemName: "mappin"), for: .normal)
+        
+        trashButton.addTarget(self, action: #selector(deleteRecAndCancelSending), for: .touchUpInside)
+        sendButton.addTarget(self, action: #selector(sendVoiceMessageFromCropView), for: .touchUpInside)
+        playButton.addTarget(self, action: #selector(playLastVoiceMessage), for: .touchUpInside)
+        
+        
+
+        
+        let buttons = [sendButton, cropButton, playButton, trashButton, recButton]
+        for button in buttons {
+            cropView.addSubview(button)
+            button.translatesAutoresizingMaskIntoConstraints = false
+        }
+        cropView.addSubview(slider)
+        slider.translatesAutoresizingMaskIntoConstraints = false
+        
+        NSLayoutConstraint.activate([
+            NSLayoutConstraint.init(item: slider, attribute: .top, relatedBy: .equal, toItem: cropView, attribute: .topMargin, multiplier: 1, constant: 0),
+            NSLayoutConstraint.init(item: slider, attribute: .leading, relatedBy: .equal, toItem: cropView, attribute: .leading, multiplier: 1, constant: 10.0),
+            NSLayoutConstraint.init(item: slider, attribute: .trailing, relatedBy: .equal, toItem: cropView, attribute: .trailing, multiplier: 1, constant: 10.0),
+            NSLayoutConstraint.init(item: slider, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1, constant: 20)
+        ])
+        
+        NSLayoutConstraint.activate([
+        NSLayoutConstraint.init(item: sendButton, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1, constant: 35),
+        NSLayoutConstraint.init(item: sendButton, attribute: .width, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1, constant: 35),
+        NSLayoutConstraint.init(item: sendButton, attribute: .trailing, relatedBy: .equal, toItem: cropView, attribute: .trailing, multiplier: 1, constant: -20),
+        NSLayoutConstraint.init(item: sendButton, attribute: .centerY, relatedBy: .equal, toItem: cropView, attribute: .centerY, multiplier: 1, constant: 15)
+        ])
+        
+        NSLayoutConstraint.activate([
+            NSLayoutConstraint.init(item: cropButton, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1, constant: 35),
+            NSLayoutConstraint.init(item: cropButton, attribute: .width, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1, constant: 35),
+            NSLayoutConstraint.init(item: cropButton, attribute: .centerY, relatedBy: .equal, toItem: sendButton, attribute: .centerY, multiplier: 1, constant: 0),
+            NSLayoutConstraint.init(item: cropButton, attribute: .trailing, relatedBy: .equal, toItem: sendButton, attribute: .leading, multiplier: 1, constant: -20)
+        ])
+        
+        NSLayoutConstraint.activate([
+            NSLayoutConstraint.init(item: recButton, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1, constant: 35),
+            NSLayoutConstraint.init(item: recButton, attribute: .width, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1, constant: 35),
+            NSLayoutConstraint.init(item: recButton, attribute: .centerY, relatedBy: .equal, toItem: cropButton, attribute: .centerY, multiplier: 1, constant: 0),
+            NSLayoutConstraint.init(item: recButton, attribute: .trailing, relatedBy: .equal, toItem: cropButton, attribute: .leading, multiplier: 1, constant: -20)
+        ])
+        
+        NSLayoutConstraint.activate([
+            NSLayoutConstraint.init(item: playButton, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1, constant: 35),
+            NSLayoutConstraint.init(item: playButton, attribute: .width, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1, constant: 35),
+            NSLayoutConstraint.init(item: playButton, attribute: .centerY, relatedBy: .equal, toItem: recButton, attribute: .centerY, multiplier: 1, constant: 0),
+            NSLayoutConstraint.init(item: playButton, attribute: .trailing, relatedBy: .equal, toItem: recButton, attribute: .leading, multiplier: 1, constant: -20)
+        ])
+        
+        NSLayoutConstraint.activate([
+            NSLayoutConstraint.init(item: trashButton, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1, constant: 35),
+            NSLayoutConstraint.init(item: trashButton, attribute: .width, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1, constant: 35),
+            NSLayoutConstraint.init(item: trashButton, attribute: .centerY, relatedBy: .equal, toItem: playButton, attribute: .centerY, multiplier: 1, constant: 0),
+            NSLayoutConstraint.init(item: trashButton, attribute: .trailing, relatedBy: .equal, toItem: playButton, attribute: .leading, multiplier: 1, constant: -20)
+        ])
+        
+        UIView.animate(withDuration: 0.25, animations: {
+            self.tableView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 10, right: 0)
+            self.tableView.setContentOffset(CGPoint(x: self.tableView.bounds.minX, y: self.tableView.bounds.maxY), animated: true)
+            self.cropView.frame = CGRect(x: self.bottomContainerView.frame.minX,
+                                         y: self.bottomContainerView.frame.minY - 10,
+                                         width: self.cropView.frame.width,
+                                         height: self.cropView.frame.height)
+        })
+        
+    }
+    
+    func removeCropView() {
+        guard let window = view.window else { return }
+        UIView.animate(withDuration: 0.25, animations: {
+            self.tableView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
+            self.cropView.frame = CGRect(
+                x: window.frame.minX,
+                y: window.frame.maxY,
+                width: self.bottomContainerView.frame.width,
+                height: self.bottomContainerView.frame.height + 10.0)
+        }, completion: { complete in
+            if complete {
+                self.cropView.removeFromSuperview()
+                self.cropView = nil
+            }
+        })
+    }
+    
+    
+    @objc func deleteRecAndCancelSending() {
+        messageArray.remove(at: messageArray.count - 1)
+        voiceRecordNumber -= 1
+        removeCropView()
+    }
+    
+    @objc func sendVoiceMessageFromCropView() {
+        removeCropView()
+        sendVoiceMessage()
+    }
+    
+    @objc func playLastVoiceMessage() {
+        if let url = URL(string: messageArray[messageArray.count - 1].text) {
+            play(urlToPlay: url)
         }
     }
     
@@ -228,6 +369,12 @@ class TableViewControllerWithLabels: UIViewController {
           name: UIResponder.keyboardWillHideNotification,
           object: nil)
         
+        NotificationCenter.default.addObserver(
+        self,
+        selector: #selector(keyboardDidHide(_:)),
+        name: UIResponder.keyboardDidHideNotification,
+        object: nil)
+        
         messageTextField.delegate = self
         sendButton.setBackgroundImage(UIImage.init(systemName: "mic.circle.fill"), for: .normal)
         messageTextField.addTarget(self, action: #selector(TableViewControllerWithLabels.textFieldDidChange(_:)), for: UIControl.Event.editingChanged)
@@ -239,6 +386,8 @@ class TableViewControllerWithLabels: UIViewController {
         NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardDidShowNotification, object: nil)
         
         NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillHideNotification, object: nil)
+        
+        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardDidHideNotification, object: nil)
     }
     
     @objc func keyboardWillShow(notification: Notification) {
@@ -259,7 +408,18 @@ class TableViewControllerWithLabels: UIViewController {
         if window.frame.height != view.frame.height {
             UIView.animate(withDuration: 0.25, delay: 0, options: .curveEaseOut, animations: {
                 self.view.frame = CGRect(x: 0, y: 0, width: window.frame.width, height: window.frame.height)
+//
             })
+        }
+    }
+    
+    @objc func keyboardDidHide(_: Notification) {
+        if self.cropView != nil {
+            self.cropView.frame = CGRect(
+                x: self.bottomContainerView.frame.minX,
+                y: self.bottomContainerView.frame.minY - 10,
+                width: self.bottomContainerView.frame.width,
+                height: self.bottomContainerView.frame.height + 10.0)
         }
     }
 }

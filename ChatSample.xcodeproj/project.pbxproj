@@ -12,6 +12,7 @@
 		842DF85323F69CB7001E5006 /* OddCellWithLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 842DF85223F69CB7001E5006 /* OddCellWithLabel.swift */; };
 		842DF85523F6BFFE001E5006 /* LabelExtends.swift in Sources */ = {isa = PBXBuildFile; fileRef = 842DF85423F6BFFE001E5006 /* LabelExtends.swift */; };
 		842DF85723F6C729001E5006 /* EvenCellWithLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 842DF85623F6C729001E5006 /* EvenCellWithLabel.swift */; };
+		843CBD33241A801500A07FB1 /* cropView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 843CBD32241A801500A07FB1 /* cropView.xib */; };
 		84DB5B5423F542D000439AA8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84DB5B5323F542D000439AA8 /* AppDelegate.swift */; };
 		84DB5B5623F542D000439AA8 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84DB5B5523F542D000439AA8 /* SceneDelegate.swift */; };
 		84DB5B5B23F542D000439AA8 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 84DB5B5923F542D000439AA8 /* Main.storyboard */; };
@@ -36,7 +37,8 @@
 		842DF85223F69CB7001E5006 /* OddCellWithLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OddCellWithLabel.swift; sourceTree = "<group>"; };
 		842DF85423F6BFFE001E5006 /* LabelExtends.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelExtends.swift; sourceTree = "<group>"; };
 		842DF85623F6C729001E5006 /* EvenCellWithLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EvenCellWithLabel.swift; sourceTree = "<group>"; };
-		84DB5B5023F542D000439AA8 /* ChatSample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ChatSample.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		843CBD32241A801500A07FB1 /* cropView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = cropView.xib; sourceTree = "<group>"; };
+		84DB5B5023F542D000439AA8 /* ChatSampleNew.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ChatSampleNew.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		84DB5B5323F542D000439AA8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		84DB5B5523F542D000439AA8 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		84DB5B5A23F542D000439AA8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -91,7 +93,7 @@
 		84DB5B5123F542D000439AA8 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				84DB5B5023F542D000439AA8 /* ChatSample.app */,
+				84DB5B5023F542D000439AA8 /* ChatSampleNew.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -108,6 +110,7 @@
 				842DF85023F69ABA001E5006 /* TableViewControllerWithLabels.swift */,
 				842DF85423F6BFFE001E5006 /* LabelExtends.swift */,
 				84DB5B5923F542D000439AA8 /* Main.storyboard */,
+				843CBD32241A801500A07FB1 /* cropView.xib */,
 				842DF85623F6C729001E5006 /* EvenCellWithLabel.swift */,
 				842DF85223F69CB7001E5006 /* OddCellWithLabel.swift */,
 				84E52CB22417FEF700FC4A29 /* EvenCellVithVoice.swift */,
@@ -232,7 +235,7 @@
 			);
 			name = ChatSample;
 			productName = DelegateTest;
-			productReference = 84DB5B5023F542D000439AA8 /* ChatSample.app */;
+			productReference = 84DB5B5023F542D000439AA8 /* ChatSampleNew.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -273,6 +276,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				843CBD33241A801500A07FB1 /* cropView.xib in Resources */,
 				84DB5B6023F542D100439AA8 /* LaunchScreen.storyboard in Resources */,
 				84DB5B5D23F542D100439AA8 /* Assets.xcassets in Resources */,
 				84DB5B5B23F542D000439AA8 /* Main.storyboard in Resources */,
@@ -497,7 +501,7 @@
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = sbrf.ChatSample;
-				PRODUCT_NAME = ChatSample;
+				PRODUCT_NAME = ChatSampleNew;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -516,7 +520,7 @@
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = sbrf.ChatSample;
-				PRODUCT_NAME = ChatSample;
+				PRODUCT_NAME = ChatSampleNew;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};

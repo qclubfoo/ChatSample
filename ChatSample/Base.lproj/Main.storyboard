@@ -15,24 +15,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter message here" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Qlh-KU-KWP">
-                                <rect key="frame" x="20" y="812" width="324" height="40"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" returnKeyType="send" enablesReturnKeyAutomatically="YES"/>
-                            </textField>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" reversesTitleShadowWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GcP-2h-kL3">
-                                <rect key="frame" x="354" y="812.5" width="40" height="39"/>
-                                <gestureRecognizers/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="40" id="bmv-Mm-StW"/>
-                                    <constraint firstAttribute="width" constant="40" id="kOp-gR-aLU"/>
-                                </constraints>
-                                <state key="normal" backgroundImage="arrow.up.circle.fill" catalog="system"/>
-                                <connections>
-                                    <action selector="sendMessageButton:" destination="XBd-gh-rKN" eventType="touchUpInside" id="Vaq-lt-OVa"/>
-                                    <outletCollection property="gestureRecognizers" destination="dxm-9y-xa5" appends="YES" id="aZg-7f-lyn"/>
-                                </connections>
-                            </button>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" separatorInsetReference="fromAutomaticInsets" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="XM1-RA-cmS">
                                 <rect key="frame" x="0.0" y="88" width="414" height="714"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
@@ -230,21 +212,50 @@
                                     <outlet property="delegate" destination="XBd-gh-rKN" id="L6B-Dd-mWE"/>
                                 </connections>
                             </tableView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="x2W-58-SXe">
+                                <rect key="frame" x="0.0" y="802" width="414" height="60"/>
+                                <subviews>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter message here" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Qlh-KU-KWP">
+                                        <rect key="frame" x="10" y="13" width="344" height="34"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits" returnKeyType="send" enablesReturnKeyAutomatically="YES"/>
+                                    </textField>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" reversesTitleShadowWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GcP-2h-kL3">
+                                        <rect key="frame" x="364" y="10.5" width="40" height="39"/>
+                                        <gestureRecognizers/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="40" id="MDU-rB-MoD"/>
+                                            <constraint firstAttribute="width" constant="40" id="S6G-Pk-lkP"/>
+                                        </constraints>
+                                        <state key="normal" backgroundImage="arrow.up.circle.fill" catalog="system"/>
+                                        <connections>
+                                            <action selector="sendMessageButton:" destination="XBd-gh-rKN" eventType="touchUpInside" id="Vaq-lt-OVa"/>
+                                            <outletCollection property="gestureRecognizers" destination="dxm-9y-xa5" appends="YES" id="aZg-7f-lyn"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <constraints>
+                                    <constraint firstItem="Qlh-KU-KWP" firstAttribute="centerY" secondItem="GcP-2h-kL3" secondAttribute="centerY" id="3nT-fP-R1n"/>
+                                    <constraint firstItem="GcP-2h-kL3" firstAttribute="leading" secondItem="Qlh-KU-KWP" secondAttribute="trailing" constant="10" id="8mI-Oa-8Wn"/>
+                                    <constraint firstAttribute="trailing" secondItem="GcP-2h-kL3" secondAttribute="trailing" constant="10" id="Az4-YZ-v40"/>
+                                    <constraint firstItem="Qlh-KU-KWP" firstAttribute="leading" secondItem="x2W-58-SXe" secondAttribute="leading" constant="10" id="BYm-Ip-3QT"/>
+                                    <constraint firstAttribute="bottom" secondItem="GcP-2h-kL3" secondAttribute="bottom" constant="10" id="O7I-Wq-tLV"/>
+                                    <constraint firstItem="GcP-2h-kL3" firstAttribute="centerY" secondItem="x2W-58-SXe" secondAttribute="centerY" id="UCW-in-XgQ"/>
+                                    <constraint firstItem="GcP-2h-kL3" firstAttribute="top" secondItem="x2W-58-SXe" secondAttribute="top" constant="10" id="bcq-x6-w2K"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <gestureRecognizers/>
                         <constraints>
-                            <constraint firstItem="GcP-2h-kL3" firstAttribute="centerY" secondItem="Qlh-KU-KWP" secondAttribute="centerY" id="0pj-88-MzE"/>
                             <constraint firstItem="XM1-RA-cmS" firstAttribute="leading" secondItem="lmR-Fj-x9k" secondAttribute="leading" id="9fS-1L-6qd"/>
                             <constraint firstItem="XM1-RA-cmS" firstAttribute="trailing" secondItem="lmR-Fj-x9k" secondAttribute="trailing" id="DJR-JG-yY7"/>
-                            <constraint firstItem="GcP-2h-kL3" firstAttribute="height" secondItem="Qlh-KU-KWP" secondAttribute="height" id="M8K-5S-taw"/>
-                            <constraint firstItem="GcP-2h-kL3" firstAttribute="leading" secondItem="Qlh-KU-KWP" secondAttribute="trailing" constant="10" id="RUn-Zm-jIM"/>
-                            <constraint firstItem="lmR-Fj-x9k" firstAttribute="bottom" secondItem="GcP-2h-kL3" secondAttribute="bottom" constant="10" id="Tvf-rf-Cti"/>
-                            <constraint firstItem="lmR-Fj-x9k" firstAttribute="trailing" secondItem="GcP-2h-kL3" secondAttribute="trailing" constant="20" id="bsy-aA-dkc"/>
+                            <constraint firstItem="x2W-58-SXe" firstAttribute="leading" secondItem="lmR-Fj-x9k" secondAttribute="leading" id="G9L-4K-Xzb"/>
+                            <constraint firstItem="lmR-Fj-x9k" firstAttribute="trailing" secondItem="x2W-58-SXe" secondAttribute="trailing" id="SMR-Yj-0td"/>
+                            <constraint firstItem="x2W-58-SXe" firstAttribute="top" secondItem="XM1-RA-cmS" secondAttribute="bottom" id="a4Z-IT-7Qg"/>
                             <constraint firstItem="XM1-RA-cmS" firstAttribute="top" secondItem="lmR-Fj-x9k" secondAttribute="top" id="iIl-m5-oO1"/>
-                            <constraint firstItem="GcP-2h-kL3" firstAttribute="leading" secondItem="Qlh-KU-KWP" secondAttribute="trailing" constant="10" id="nRh-TL-Nx8"/>
-                            <constraint firstItem="Qlh-KU-KWP" firstAttribute="top" secondItem="XM1-RA-cmS" secondAttribute="bottom" constant="10" id="uQt-Tb-4YT"/>
-                            <constraint firstItem="Qlh-KU-KWP" firstAttribute="leading" secondItem="lmR-Fj-x9k" secondAttribute="leading" constant="20" id="vN9-NM-3Gi"/>
+                            <constraint firstItem="lmR-Fj-x9k" firstAttribute="bottom" secondItem="x2W-58-SXe" secondAttribute="bottom" id="iu0-aY-LPn"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="lmR-Fj-x9k"/>
                         <connections>
@@ -253,6 +264,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="DrB-ve-s6U"/>
                     <connections>
+                        <outlet property="bottomContainerView" destination="x2W-58-SXe" id="nUa-be-p16"/>
                         <outlet property="longPressOutlet" destination="dxm-9y-xa5" id="0n9-OL-bGm"/>
                         <outlet property="messageTextField" destination="Qlh-KU-KWP" id="x1N-gB-zCy"/>
                         <outlet property="sendButton" destination="GcP-2h-kL3" id="TXb-Ob-gyv"/>
