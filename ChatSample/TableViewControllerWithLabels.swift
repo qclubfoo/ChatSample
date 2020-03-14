@@ -99,6 +99,8 @@ class TableViewControllerWithLabels: UIViewController {
     var audioRecorder: AVAudioRecorder?
     var player: AVAudioPlayer?
     
+    var timer: Timer?
+    
     var cropView: UIView!
     
     @IBOutlet weak var tableView: UITableView!
@@ -304,6 +306,15 @@ class TableViewControllerWithLabels: UIViewController {
     @objc func playLastVoiceMessage() {
         if let url = URL(string: messageArray[messageArray.count - 1].text) {
             play(urlToPlay: url)
+            timer = Timer.scheduledTimer(timeInterval: 0.1, target: self, selector: #selector(stopPlaying), userInfo: nil, repeats: true)
+        }
+    }
+    
+    @objc private func stopPlaying() {
+        guard let player = player else { return }
+        if Float(player.currentTime) > editSlider.value {
+            player.stop()
+            timer?.invalidate()
         }
     }
     
@@ -344,6 +355,7 @@ class TableViewControllerWithLabels: UIViewController {
             player = try AVAudioPlayer(contentsOf: urlToPlay)
             player?.delegate = self
             player?.volume = 1.0
+            player?.currentTime = TimeInterval(exactly: 0.1) ?? 0
             player?.play()
         } catch {
             print("There is no files to play")
