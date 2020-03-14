@@ -56,14 +56,24 @@ class TextMessage: MessageType {
 }
 
 class AudioMessage: MessageType {
-    var text: String { url.path }
+    var text: String { recName }
     var kind: MessageKind = .audio
-    var url: URL
+    var recName: String
     
-    init(url: URL) {
-        self.url = url
+    init(recName: String) {
+        self.recName = recName
     }
 }
+
+//class AudioMessage: MessageType {
+//    var text: String { url.path }
+//    var kind: MessageKind = .audio
+//    var url: URL
+//
+//    init(url: URL) {
+//        self.url = url
+//    }
+//}
 
 
 class TableViewControllerWithLabels: UIViewController {
@@ -142,7 +152,7 @@ class TableViewControllerWithLabels: UIViewController {
     @IBAction func longPressButton(_ sender: Any) {
         if messageTextField.text == "" {
             let recName = "VoiceMessage_\(voiceRecordNumber).m4a"
-            let url = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0].appendingPathComponent(recName)
+            let url = getDocumentDirectory().appendingPathComponent(recName)
 
             if longPressOutlet.state == .began {
                 if audioRecorder == nil {
@@ -151,7 +161,7 @@ class TableViewControllerWithLabels: UIViewController {
             } else if longPressOutlet.state == .ended {
                 if audioRecorder != nil {
                     finishRecording(success: true)
-                    messageArray.append(AudioMessage(url: url))
+                    messageArray.append(AudioMessage(recName: recName))
                     voiceRecordNumber += 1
                     addCropView()
                 }
@@ -179,12 +189,12 @@ class TableViewControllerWithLabels: UIViewController {
         editTrashButton.setBackgroundImage(UIImage(systemName: "trash.fill"), for: .normal)
         editSlider.setThumbImage(UIImage(systemName: "mappin"), for: .normal)
         editSlider.minimumValue = 0
-        let urlPath = messageArray[messageArray.count - 1].text
-        let url = URL(string: urlPath)
+        let pathComponent = messageArray[messageArray.count - 1].text
+        let url = getDocumentDirectory().appendingPathComponent(pathComponent)
         var player: AVAudioPlayer?
         
         do {
-            player = try AVAudioPlayer(contentsOf: url!)
+            player = try AVAudioPlayer(contentsOf: url)
         } catch {
             print(error.localizedDescription)
         }
@@ -197,10 +207,16 @@ class TableViewControllerWithLabels: UIViewController {
         
         
         editTrashButton.addTarget(self, action: #selector(deleteRecAndCancelSending), for: .touchUpInside)
+        
         editSendButton.addTarget(self, action: #selector(sendVoiceMessageFromCropView), for: .touchUpInside)
+        
         editPlayButton.addTarget(self, action: #selector(playLastVoiceMessage), for: .touchUpInside)
+        
         editRecButton.addTarget(self, action: #selector(recButtonDown(sender:)), for: .touchDown)
         editRecButton.addTarget(self, action: #selector(recButtonTapped(sender:)), for: .touchUpInside)
+        
+        editCropButton.addTarget(self, action: #selector(trimAndSave), for: .touchUpInside)
+        
     
         
         let buttons = [editSendButton, editCropButton, editPlayButton, editTrashButton, editRecButton]
@@ -304,10 +320,9 @@ class TableViewControllerWithLabels: UIViewController {
     }
     
     @objc func playLastVoiceMessage() {
-        if let url = URL(string: messageArray[messageArray.count - 1].text) {
+        let url = getDocumentDirectory().appendingPathComponent(messageArray[messageArray.count - 1].text)
             play(urlToPlay: url)
             timer = Timer.scheduledTimer(timeInterval: 0.1, target: self, selector: #selector(stopPlaying), userInfo: nil, repeats: true)
-        }
     }
     
     @objc private func stopPlaying() {
@@ -317,6 +332,93 @@ class TableViewControllerWithLabels: UIViewController {
             timer?.invalidate()
         }
     }
+    
+    @objc private func trimAndSave() {
+        let lastRecUrl = getDocumentDirectory().appendingPathComponent(messageArray[messageArray.count - 1].text)
+//        let lastRecUrl = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0].appendingPathComponent("VoiceMessage_1.m4a")
+//        guard let lastRecUrl = URL(string: urlPath)  else { return }
+        if let exporter = AVAssetExportSession(asset: AVAsset(url: lastRecUrl), presetName: AVAssetExportPresetAppleM4A) {
+            exporter.outputFileType = AVFileType.m4a
+            exporter.outputURL = FileManager.default.temporaryDirectory.appendingPathComponent("tmp.m4a")
+            let tmpUrl = exporter.outputURL!
+            
+            if isFileAvaliable(url: tmpUrl) {
+                do {
+                    try FileManager.default.removeItem(at: tmpUrl)
+                } catch {
+                    print(error.localizedDescription)
+                    return
+                }
+            }
+            
+            let startTime = CMTime(seconds: 0, preferredTimescale: CMTimeScale(100))
+            let stopTime = CMTime(seconds: Double(editSlider.value), preferredTimescale: CMTimeScale(100))
+            exporter.timeRange = CMTimeRangeFromTimeToTime(start: startTime, end: stopTime)
+            exporter.exportAsynchronously(completionHandler: {
+                print("export complete \(exporter.status)")
+                
+                switch exporter.status {
+                case  AVAssetExportSessionStatus.failed:
+                    
+                    if let e = exporter.error {
+                        print("export failed \(e)")
+                    }
+                    
+                case AVAssetExportSessionStatus.cancelled:
+                    print("export cancelled \(String(describing: exporter.error))")
+                default:
+                    DispatchQueue.main.async {
+                        if self.isFileAvaliable(url: lastRecUrl) {
+                            do {
+                                try FileManager.default.removeItem(at: lastRecUrl)
+                            } catch {
+                                print(error.localizedDescription)
+                                return
+                            }
+                        }
+                        if self.isFileAvaliable(url: tmpUrl) {
+                            do {
+                                try FileManager.default.moveItem(at: tmpUrl, to: lastRecUrl)
+                            } catch {
+                                print(error.localizedDescription)
+                            }
+                        }
+                        do {
+                            self.player = try AVAudioPlayer(contentsOf: lastRecUrl)
+                        } catch {
+                            print(error.localizedDescription)
+                        }
+                        
+                        if self.player != nil {
+                            self.editSlider.maximumValue = Float(self.player!.duration)
+                            self.editSlider.setValue(self.editSlider.maximumValue, animated: true)
+                            self.player = nil
+                        }
+                    }
+                    print("export complete")
+                }
+            })
+        } else {
+            print("cannot create AVAssetExportSession for asset")
+        }
+    }
+    
+    func isFileAvaliable(url: URL) -> Bool {
+        do {
+            if try url.checkResourceIsReachable() {
+                return true
+            }
+        } catch {
+            print(error.localizedDescription)
+        }
+        return false
+    }
+    
+    func getDocumentDirectory() -> URL {
+        let paths = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
+        return paths[0]
+    }
+    
     
     @IBAction func hidingKeyboardTap(_ sender: Any) {
         messageTextField.resignFirstResponder()
@@ -334,11 +436,11 @@ class TableViewControllerWithLabels: UIViewController {
         guard let index = button.cellContainingButtonIndexPath?.row else { return }
         guard let player = self.player else {
             activePlayingButton = button
-            play(urlToPlay: URL(fileURLWithPath: messageArray[index].text))
+            play(urlToPlay: getDocumentDirectory().appendingPathComponent(messageArray[index].text)) // change getDocumentDirectory.append(messageArray[index].text)
             button.setBackgroundImage(UIImage(systemName: "stop.circle"), for: .normal)
             return
         }
-        play(urlToPlay: URL(fileURLWithPath: messageArray[index].text))
+        play(urlToPlay: getDocumentDirectory().appendingPathComponent(messageArray[index].text))
         if player.isPlaying {
             activePlayingButton = nil
             player.stop()
