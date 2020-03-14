@@ -68,17 +68,14 @@ final class AudioRecorderManager: NSObject {
         }
         
         let recordSettings = [
-            AVFormatIDKey: NSNumber(value:kAudioFormatAppleLossless),
+            AVFormatIDKey: Int(kAudioFormatAppleLossless),
             AVEncoderAudioQualityKey : AVAudioQuality.max.rawValue,
             AVEncoderBitRateKey : self.encoderBitRate,
             AVNumberOfChannelsKey: self.numberOfChannels,
             AVSampleRateKey : self.sampleRate
         ] as [String : Any]
         
-        guard let path = URL.documentsPath(forFileName: self.audioFileNamePrefix + NSUUID().uuidString) else {
-            print("Incorrect path for new audio file")
-            throw AudioErrorType.audioFileWrongPath
-        }
+        let path = getDocumentURL(withAppendingPathComponent: self.audioFileNamePrefix + NSUUID().uuidString + ".m4a")
 
         try AVAudioSession.sharedInstance().setCategory(.playAndRecord, mode: .default, options: .defaultToSpeaker)
         try AVAudioSession.sharedInstance().setActive(true)
@@ -132,7 +129,7 @@ final class AudioRecorderManager: NSObject {
         print("Audio Recorder did remove current record successfully")
     }
     
-    func concatenate(firstAudioUrl: URL, secondAudioUrl: URL) throws {
+    func concatenate(firstAudioUrl: URL, secondAudioUrl: URL, completion: @escaping () -> Void) throws {
         if self.isRunning {
             print("Audio Recorder tried to concatenate recording before stopping it")
             throw AudioErrorType.alreadyRecording
@@ -141,10 +138,10 @@ final class AudioRecorderManager: NSObject {
         let mutableComposition = AVMutableComposition()
         let audioFilesUrls: [URL] = [firstAudioUrl, secondAudioUrl]
         for i in 0 ..< audioFilesUrls.count {
-            let compositionAudioTrack :AVMutableCompositionTrack = mutableComposition.addMutableTrack(withMediaType: AVMediaType.audio,
+            let compositionAudioTrack: AVMutableCompositionTrack = mutableComposition.addMutableTrack(withMediaType: AVMediaType.audio,
                                                                                                       preferredTrackID: CMPersistentTrackID()
                 )!
-            let asset = AVURLAsset(url: audioFilesUrls[i])
+            let asset = AVURLAsset(url: audioFilesUrls[i], options: nil)
             let track = asset.tracks(withMediaType: AVMediaType.audio).first
             let timeRange = CMTimeRange(start: CMTimeMake(value: 0,
                                                           timescale: 600),
@@ -154,14 +151,12 @@ final class AudioRecorderManager: NSObject {
                                                        at: mutableComposition.duration)
         }
         
-        guard let mergeUrl = URL.documentsPath(forFileName: self.audioFileNamePrefix + ".merge." + NSUUID().uuidString) else {
-            print("Incorrect path for new audio file")
-            throw AudioErrorType.audioFileWrongPath
-        }
+        let mergeUrl = getDocumentURL(withAppendingPathComponent: self.audioFileNamePrefix + ".merge." + NSUUID().uuidString + ".m4a")
         
         var throwError: AudioErrorType?
         let assetExport = AVAssetExportSession(asset: mutableComposition, presetName: AVAssetExportPresetAppleM4A)
         assetExport?.outputURL = mergeUrl
+        assetExport?.outputFileType = .m4a
         assetExport?.exportAsynchronously(completionHandler:
             {
                 switch assetExport!.status
@@ -205,12 +200,14 @@ final class AudioRecorderManager: NSObject {
                         if throwError == nil {
                             do {
                                 try FileManager.default.moveItem(at: mergeUrl, to: firstAudioUrl)
+                                
                             } catch {
                                 throwError = .assetExportFailed
                             }
                         }
                     }
                     print("Audio Concatenation Complete")
+                    completion()
                 }
         })
         
@@ -257,5 +254,12 @@ extension Notification.Name {
     static let audioRecorderManagerMeteringLevelDidUpdateNotification = Notification.Name("AudioRecorderManagerMeteringLevelDidUpdateNotification")
     static let audioRecorderManagerMeteringLevelDidFinishNotification = Notification.Name("AudioRecorderManagerMeteringLevelDidFinishNotification")
     static let audioRecorderManagerMeteringLevelDidFailNotification = Notification.Name("AudioRecorderManagerMeteringLevelDidFailNotification")
+}
+
+extension AudioRecorderManager {
+    fileprivate func getDocumentURL(withAppendingPathComponent: String) -> URL {
+        let url = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0].appendingPathComponent(withAppendingPathComponent)
+        return url
+    }
 }
 

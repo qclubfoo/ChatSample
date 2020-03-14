@@ -128,14 +128,15 @@ class TableViewControllerWithLabels: UIViewController {
     
     private var currentState: AudioRecodingState = .ready {
         didSet {
-            self.editRecButton.setBackgroundImage(self.currentState.buttonImage, for: .normal)
             self.editCropButton.isEnabled = !(self.currentState == .recording)  // || еще возможное условие
             self.editPlayButton.isEnabled = !(self.currentState == .recording)  // || еще возможное условие
             self.editTrashButton.isEnabled = !(self.currentState == .recording) // || еще возможное условие
             self.editSlider.isEnabled = !(self.currentState == .recording)      // || еще возможное условие
+            self.editSendButton.isEnabled = !(self.currentState == .recording)
         }
     }
     
+    var audioModel: AudioModel = AudioModel()
     
     @IBAction func sendMessageButton(_ sender: UIButton) {
         guard let message = messageTextField.text else { return }
@@ -300,11 +301,54 @@ class TableViewControllerWithLabels: UIViewController {
     @objc func recButtonTapped(sender: UIButton) {
         sender.setBackgroundImage(UIImage(systemName: "mic.circle"), for: .normal)
         
+        switch self.currentState {
+        case .recording:
+            do {
+                try self.audioModel.stopRecording()
+                self.currentState = .ready
+            } catch {
+                self.currentState = .ready
+                AlertService.showAlert(style: .alert, title: nil, message: error.localizedDescription)
+            }
+        default:
+            break
+        }
+        
+        let firstAudioUrl = getDocumentDirectory().appendingPathComponent(messageArray[messageArray.count - 1].text)
+        let secondAudioUrl = audioModel.currentAudioRecord!.audioFilePathLocal!
+        
+        do {
+            try AudioRecorderManager.shared.concatenate(firstAudioUrl: firstAudioUrl, secondAudioUrl: secondAudioUrl, completion: {
+                DispatchQueue.main.async {
+                    do {
+                        self.player = try AVAudioPlayer(contentsOf: firstAudioUrl)
+                    } catch {
+                        AlertService.showAlert(style: .alert, title: nil, message: error.localizedDescription)
+                    }
+                    if self.player != nil {
+                        self.editSlider.maximumValue = Float(self.player!.duration)
+                        self.editSlider.setValue(self.editSlider.maximumValue, animated: true)
+                        self.player = nil
+                    }
+                }
+            })
+        } catch {
+            AlertService.showAlert(style: .alert, title: nil, message: error.localizedDescription)
+        }
     }
     
     @objc func recButtonDown(sender: UIButton) {
         sender.setBackgroundImage(UIImage(systemName: "mic.circle.fill"), for: .normal)
-//        AudioRecorderManager.
+        if self.currentState == .ready {
+            self.audioModel.startRecording { [weak self] soundRecord, error in
+                if let error = error {
+                    AlertService.showAlert(style: .alert, title: nil, message: error.localizedDescription)
+                    return
+                }
+
+                self?.currentState = .recording
+            }
+        }
         
     }
     
@@ -321,8 +365,8 @@ class TableViewControllerWithLabels: UIViewController {
     
     @objc func playLastVoiceMessage() {
         let url = getDocumentDirectory().appendingPathComponent(messageArray[messageArray.count - 1].text)
-            play(urlToPlay: url)
-            timer = Timer.scheduledTimer(timeInterval: 0.1, target: self, selector: #selector(stopPlaying), userInfo: nil, repeats: true)
+        play(urlToPlay: url)
+        timer = Timer.scheduledTimer(timeInterval: 0.1, target: self, selector: #selector(stopPlaying), userInfo: nil, repeats: true)
     }
     
     @objc private func stopPlaying() {
@@ -508,6 +552,19 @@ class TableViewControllerWithLabels: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        audioModel.askAudioRecordingPermission()
+        
+        audioModel.audioDidFinish = { [weak self] in
+            guard let self = self else {
+                return
+            }
+            
+            self.currentState = .ready
+            
+            
+            
+        }
         
         recordingSession = AVAudioSession.sharedInstance()
         

@@ -493,8 +493,8 @@
 			baseConfigurationReference = E14B270223972381BD93CEE5 /* Pods-ChatSample.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 29U4N24KXN;
+				CODE_SIGN_STYLE = Manual;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = ChatSample/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -502,6 +502,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = sbrf.ChatSample;
 				PRODUCT_NAME = ChatSampleNew;
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -512,8 +513,8 @@
 			baseConfigurationReference = 5EC441410E2FC4BA0F0DF828 /* Pods-ChatSample.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 29U4N24KXN;
+				CODE_SIGN_STYLE = Manual;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = ChatSample/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -521,6 +522,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = sbrf.ChatSample;
 				PRODUCT_NAME = ChatSampleNew;
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
