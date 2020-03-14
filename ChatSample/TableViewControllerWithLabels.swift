@@ -195,7 +195,7 @@ class TableViewControllerWithLabels: UIViewController {
         
         
         editTrashButton.addTarget(self, action: #selector(deleteRecAndCancelSending), for: .touchUpInside)
-        sendButton.addTarget(self, action: #selector(sendVoiceMessageFromCropView), for: .touchUpInside)
+        editSendButton.addTarget(self, action: #selector(sendVoiceMessageFromCropView), for: .touchUpInside)
         editPlayButton.addTarget(self, action: #selector(playLastVoiceMessage), for: .touchUpInside)
         editRecButton.addTarget(self, action: #selector(recButtonDown(sender:)), for: .touchDown)
         editRecButton.addTarget(self, action: #selector(recButtonTapped(sender:)), for: .touchUpInside)
@@ -297,8 +297,8 @@ class TableViewControllerWithLabels: UIViewController {
     }
     
     @objc func sendVoiceMessageFromCropView() {
-        removeCropView()
         sendVoiceMessage()
+        removeCropView()
     }
     
     @objc func playLastVoiceMessage() {
